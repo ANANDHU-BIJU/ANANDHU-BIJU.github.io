@@ -7,54 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#0d0d0d;
-  --bg2:#111111;
-  --bg3:#161616;
-  --card:#1a1a1a;
-  --border:#2a2a2a;
-  --text:#f0f0f0;
-  --muted:#888888;
-  --light:#555555;
-  --accent:#4ade80;
-  --accent2:#22c55e;
-}
+:root{--bg:#0d0d0d;--bg2:#111111;--bg3:#161616;--card:#1a1a1a;--border:#2a2a2a;--text:#f0f0f0;--muted:#888888;--light:#555555;--accent:#4ade80;--accent2:#22c55e;}
 html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-
-/* BG TEXTURE */
-body::before{
-  content:'';position:fixed;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;
-}
-
-/* NAVBAR */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.2rem 5%;
-  background:rgba(13,13,13,0.85);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-}
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);cursor:pointer;}
 .nav-links{display:flex;gap:2.5rem;list-style:none;}
 .nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s;letter-spacing:.02em;}
 .nav-links a:hover,.nav-links a.active{color:var(--text);}
 .nav-links a.active{border-bottom:2px solid var(--accent);padding-bottom:.1rem;}
-
-/* SECTIONS */
 section{display:none;min-height:100vh;padding:8rem 8% 5rem;position:relative;z-index:1;}
 section.active{display:block;}
-
-/* ── HOME ── */
 #home{display:none;padding:0;}
 #home.active{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding:0;}
-.home-bg{
-  position:absolute;inset:0;z-index:0;
-  background:url('hero-bg.jpg') center/cover no-repeat;
-}
+.home-bg{position:absolute;inset:0;z-index:0;background:url('hero-bg.jpg') center/cover no-repeat;}
 .home-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55);}
 .home-content{position:relative;z-index:1;padding:0 8%;display:flex;flex-direction:column;justify-content:center;min-height:100vh;}
 .home-eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:1.2rem;}
@@ -66,36 +33,14 @@ section.active{display:block;}
 .hin:hover{color:#fff;border-color:rgba(255,255,255,.2);}
 .hin.active{color:#fff;border:1px solid var(--accent);background:rgba(74,222,128,.08);}
 .home-socials{display:flex;gap:1rem;margin-bottom:3rem;}
-.social-btn{
-  width:42px;height:42px;border-radius:50%;
-  border:1px solid var(--border);background:rgba(255,255,255,.04);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--muted);text-decoration:none;font-size:.9rem;
-  transition:all .2s;cursor:pointer;
-}
+.social-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.9rem;transition:all .2s;cursor:pointer;}
 .social-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(74,222,128,.08);}
-.home-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent);color:#0d0d0d;padding:.8rem 2rem;border-radius:6px;font-size:.9rem;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s;text-decoration:none;}
-.home-cta:hover{opacity:.85;}
-.home-know{position:absolute;bottom:2.5rem;right:5%;z-index:1;font-size:.75rem;color:var(--light);letter-spacing:.05em;}
-.home-know span{color:var(--accent);}
-
-/* ── SECTION HEADER ── */
 .sec-eyebrow{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:.8rem;}
 .sec-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent);opacity:.4;}
 .sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;margin-bottom:3rem;}
-
-/* ── ABOUT ── */
 .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;}
-.about-photo{
-  aspect-ratio:3/4;border-radius:12px;overflow:hidden;
-  background:var(--card);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--light);text-align:center;padding:2rem;
-}
+.about-photo{aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--light);text-align:center;padding:0;}
 .about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.about-photo-placeholder .api{font-size:3rem;margin-bottom:.8rem;}
-.about-photo-placeholder p{font-size:.78rem;line-height:1.6;color:var(--muted);}
-.about-photo-placeholder code{font-size:.72rem;background:var(--border);padding:.15rem .4rem;border-radius:4px;font-family:monospace;margin-top:.3rem;display:inline-block;}
 .about-role{font-size:1.4rem;font-weight:700;color:var(--accent);font-family:'Space Grotesk',sans-serif;margin-bottom:.3rem;}
 .about-org{font-size:.9rem;color:var(--muted);margin-bottom:1.8rem;font-style:italic;}
 .about-info{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 2rem;margin-bottom:1.8rem;}
@@ -106,8 +51,6 @@ section.active{display:block;}
 .about-bio{font-size:.92rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;}
 .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
 .about-tag{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:var(--accent);font-size:.75rem;padding:.3rem .8rem;border-radius:20px;font-weight:500;}
-
-/* ── RESUME (Education + Skills) ── */
 .resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
 .resume-col h3{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:2rem;color:var(--text);}
 .timeline{position:relative;}
@@ -123,58 +66,26 @@ section.active{display:block;}
 .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
 .stag{background:var(--card);border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:.3rem .8rem;border-radius:6px;transition:border-color .2s;}
 .stag:hover{border-color:var(--accent);}
-.download-cv{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--accent);color:var(--accent);background:transparent;padding:.6rem 1.4rem;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;margin-bottom:2rem;text-decoration:none;}
-.download-cv:hover{background:rgba(74,222,128,.08);}
-
-/* ── PROJECTS ── */
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.proj-card{
-  background:var(--card);border:2px solid var(--border);border-radius:10px;
-  overflow:hidden;cursor:pointer;position:relative;
-  transition:border-color .25s,transform .25s;
-  aspect-ratio:4/3;
-}
+.proj-card{background:var(--card);border:2px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;transition:border-color .25s,transform .25s;aspect-ratio:4/3;}
 .proj-card:hover{border-color:var(--accent);transform:translateY(-4px);}
-.proj-card-img{width:100%;height:100%;object-fit:cover;display:flex;align-items:center;justify-content:center;background:var(--bg3);}
-.proj-card-img img{width:100%;height:100%;object-fit:cover;}
+.proj-card-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3);}
+.proj-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .proj-card-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;color:var(--light);text-align:center;padding:1.5rem;}
 .proj-card-placeholder .pci{font-size:2.8rem;margin-bottom:.8rem;}
 .proj-card-placeholder p{font-size:.75rem;line-height:1.5;}
-.proj-card-placeholder code{font-size:.7rem;background:var(--border);padding:.1rem .35rem;border-radius:4px;font-family:monospace;margin-top:.3rem;display:inline-block;}
-.proj-card-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 60%,transparent 100%);
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:1.2rem 1.3rem;
-  opacity:0;transition:opacity .25s;
-}
+.proj-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 60%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem 1.3rem;opacity:0;transition:opacity .25s;}
 .proj-card:hover .proj-card-overlay{opacity:1;}
 .proj-card-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
 .proj-card-short{font-size:.75rem;color:rgba(255,255,255,.65);line-height:1.4;}
 .proj-card-badge{position:absolute;top:.8rem;right:.8rem;background:var(--accent);color:#0d0d0d;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;opacity:0;transition:opacity .25s;}
 .proj-card:hover .proj-card-badge{opacity:1;}
 .proj-always-name{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);padding:.8rem 1rem .7rem;font-size:.85rem;font-weight:600;color:#fff;}
-
-/* ── PROJECT MODAL ── */
-.modal-overlay{
-  position:fixed;inset:0;z-index:200;
-  background:rgba(0,0,0,.85);backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;
-  padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;
-}
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
-.modal{
-  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
-  width:100%;max-width:900px;max-height:85vh;overflow-y:auto;
-  transform:translateY(20px);transition:transform .3s;
-}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:900px;max-height:85vh;overflow-y:auto;transform:translateY(20px);transition:transform .3s;}
 .modal-overlay.open .modal{transform:translateY(0);}
-.modal-close{
-  position:sticky;top:0;z-index:10;
-  display:flex;justify-content:flex-end;
-  padding:1rem 1.2rem .5rem;
-  background:var(--bg2);
-}
+.modal-close{position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;padding:1rem 1.2rem .5rem;background:var(--bg2);}
 .modal-close button{background:var(--card);border:1px solid var(--border);color:var(--muted);width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
 .modal-close button:hover{border-color:var(--accent);color:var(--accent);}
 .modal-body{padding:0 2rem 2.5rem;}
@@ -183,7 +94,8 @@ section.active{display:block;}
 .modal-award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);border-radius:20px;padding:.3rem .9rem;font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:1.5rem;}
 .modal-media-grid{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:200px 200px;gap:.6rem;margin-bottom:2rem;border-radius:10px;overflow:hidden;}
 .modal-media-item{background:var(--bg3);overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.modal-media-item img,.modal-media-item video{width:100%;height:100%;object-fit:cover;display:block;}
+.modal-media-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.modal-media-item video{width:100%;height:100%;object-fit:cover;display:block;background:#000;}
 .modal-media-main{grid-row:span 2;}
 .modal-media-placeholder{text-align:center;color:var(--light);padding:1rem;}
 .modal-media-placeholder .mpi{font-size:1.8rem;margin-bottom:.4rem;}
@@ -198,8 +110,6 @@ section.active{display:block;}
 .modal-sec li::marker{color:var(--accent);}
 .modal-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
 .modal-tag{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.15);color:var(--accent);font-size:.75rem;padding:.25rem .7rem;border-radius:6px;}
-
-/* ── CONTACT ── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:700px;}
 .contact-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s;}
 .contact-card:hover{border-color:var(--accent);}
@@ -208,15 +118,6 @@ section.active{display:block;}
 .cc-val{font-size:.9rem;font-weight:500;}
 .cc-val a{color:var(--text);text-decoration:none;}
 .cc-val a:hover{color:var(--accent);}
-
-/* CERTS */
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
-.cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.3rem;display:flex;gap:.8rem;align-items:flex-start;transition:border-color .2s;}
-.cert-card:hover{border-color:var(--accent);}
-.cert-icon{width:36px;height:36px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
-.cert-title{font-size:.87rem;font-weight:600;margin-bottom:.2rem;}
-.cert-org{font-size:.77rem;color:var(--muted);}
-
 @media(max-width:1024px){.proj-grid{grid-template-columns:repeat(2,1fr);}.resume-grid{grid-template-columns:1fr;}.about-grid{grid-template-columns:1fr;}}
 @media(max-width:768px){.nav-links{display:none;}.proj-grid{grid-template-columns:1fr 1fr;}.modal-media-grid{grid-template-columns:1fr;grid-template-rows:auto;}.modal-media-main{grid-row:span 1;}.modal-sections{grid-template-columns:1fr;}.about-info{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}}
 @media(max-width:500px){.proj-grid{grid-template-columns:1fr;}}
@@ -224,7 +125,6 @@ section.active{display:block;}
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <div class="nav-logo" onclick="show('home',this)">Anandhu Biju</div>
   <ul class="nav-links">
@@ -238,9 +138,7 @@ section.active{display:block;}
 
 <!-- HOME -->
 <section id="home" class="active">
-  <div class="home-bg">
-    <!-- REPLACE background in CSS with: background:url('hero-bg.jpg') center/cover no-repeat; -->
-  </div>
+  <div class="home-bg"></div>
   <div class="home-content">
     <div class="home-eyebrow">Electronics & Communication Engineer</div>
     <h1 class="home-title">Anandhu Biju</h1>
@@ -253,13 +151,13 @@ section.active{display:block;}
       <a class="hin" onclick="show('contact',this)">Contact</a>
     </div>
     <div class="home-socials">
-      <a class="social-btn" href="https://github.com/ANANDHU-BIJU/" target="_blank" title="GitHub">
+      <a class="social-btn" href="https://github.com/ANANDHU-BIJU/" target="_blank">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
-      <a class="social-btn" href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank" title="LinkedIn">
+      <a class="social-btn" href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <a class="social-btn" href="mailto:anandhubijua2004@gmail.com" title="Email">
+      <a class="social-btn" href="mailto:anandhubijua2004@gmail.com">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
       </a>
     </div>
@@ -272,8 +170,8 @@ section.active{display:block;}
   <h2 class="sec-title">Learn More About Me</h2>
   <div class="about-grid">
     <div class="about-photo">
-  <img src="photo.jpg" alt="Anandhu Biju"/>
-</div>
+      <img src="photo.jpg" alt="Anandhu Biju"/>
+    </div>
     <div>
       <div class="about-role">Electronics & Communication Engineer</div>
       <div class="about-org">FISAT, Angamaly · APJ Abdul Kalam Technological University</div>
@@ -302,34 +200,13 @@ section.active{display:block;}
 <section id="resume">
   <div class="sec-eyebrow">Resume</div>
   <h2 class="sec-title">Education & Skills</h2>
-  <div style="margin-bottom:2rem;">
-    <!-- <a class="download-cv" href="resume.pdf" download>⬇ Download CV</a> -->
-  </div>
   <div class="resume-grid">
     <div class="resume-col">
       <h3>Education</h3>
       <div class="timeline">
-        <div class="titem">
-          <div class="tdot"></div>
-          <div class="ttitle">B.Tech — Electronics & Communication Engineering</div>
-          <div class="tdate-badge">Sep 2023 – Present</div>
-          <div class="tsub">Minor in CS · FISAT, Angamaly · APJ Abdul Kalam TU</div>
-          <div class="tdesc">CGPA: 8.84</div>
-        </div>
-        <div class="titem">
-          <div class="tdot"></div>
-          <div class="ttitle">Higher Secondary (Class XII)</div>
-          <div class="tdate-badge">Jun 2021 – Mar 2023</div>
-          <div class="tsub">State Board · St. George Higher Secondary School, Thodupuzha</div>
-          <div class="tdesc">Percentage: 97.3%</div>
-        </div>
-        <div class="titem">
-          <div class="tdot"></div>
-          <div class="ttitle">Secondary School (Class X)</div>
-          <div class="tdate-badge">Jun 2020 – Mar 2021</div>
-          <div class="tsub">CBSE · Vimala Public School, Thodupuzha</div>
-          <div class="tdesc">Percentage: 95.6%</div>
-        </div>
+        <div class="titem"><div class="tdot"></div><div class="ttitle">B.Tech — Electronics & Communication Engineering</div><div class="tdate-badge">Sep 2023 – Present</div><div class="tsub">Minor in CS · FISAT, Angamaly · APJ Abdul Kalam TU</div><div class="tdesc">CGPA: 8.84</div></div>
+        <div class="titem"><div class="tdot"></div><div class="ttitle">Higher Secondary (Class XII)</div><div class="tdate-badge">Jun 2021 – Mar 2023</div><div class="tsub">State Board · St. George Higher Secondary School, Thodupuzha</div><div class="tdesc">Percentage: 97.3%</div></div>
+        <div class="titem"><div class="tdot"></div><div class="ttitle">Secondary School (Class X)</div><div class="tdate-badge">Jun 2020 – Mar 2021</div><div class="tsub">CBSE · Vimala Public School, Thodupuzha</div><div class="tdesc">Percentage: 95.6%</div></div>
       </div>
       <h3 style="margin-top:2.5rem;">Certifications</h3>
       <div class="timeline">
@@ -341,22 +218,10 @@ section.active{display:block;}
     </div>
     <div class="resume-col">
       <h3>Skills</h3>
-      <div class="skill-group">
-        <h4>Programming Languages</h4>
-        <div class="skill-tags"><span class="stag">C</span><span class="stag">Python</span><span class="stag">Embedded C</span></div>
-      </div>
-      <div class="skill-group">
-        <h4>Embedded & Robotics</h4>
-        <div class="skill-tags"><span class="stag">Arduino</span><span class="stag">Raspberry Pi</span><span class="stag">ESP32</span><span class="stag">Sensors</span><span class="stag">Actuators</span></div>
-      </div>
-      <div class="skill-group">
-        <h4>Tools & Software</h4>
-        <div class="skill-tags"><span class="stag">Linux</span><span class="stag">VS Code</span><span class="stag">KiCad</span><span class="stag">Autodesk Fusion</span><span class="stag">Unity</span></div>
-      </div>
-      <div class="skill-group">
-        <h4>Focus Areas</h4>
-        <div class="skill-tags"><span class="stag">Machine Learning</span><span class="stag">Computer Vision</span><span class="stag">AI on Edge</span><span class="stag">FPGA / Verilog</span></div>
-      </div>
+      <div class="skill-group"><h4>Programming Languages</h4><div class="skill-tags"><span class="stag">C</span><span class="stag">Python</span><span class="stag">Embedded C</span></div></div>
+      <div class="skill-group"><h4>Embedded & Robotics</h4><div class="skill-tags"><span class="stag">Arduino</span><span class="stag">Raspberry Pi</span><span class="stag">ESP32</span><span class="stag">Sensors</span><span class="stag">Actuators</span></div></div>
+      <div class="skill-group"><h4>Tools & Software</h4><div class="skill-tags"><span class="stag">Linux</span><span class="stag">VS Code</span><span class="stag">KiCad</span><span class="stag">Autodesk Fusion</span><span class="stag">Unity</span></div></div>
+      <div class="skill-group"><h4>Focus Areas</h4><div class="skill-tags"><span class="stag">Machine Learning</span><span class="stag">Computer Vision</span><span class="stag">AI on Edge</span><span class="stag">FPGA / Verilog</span></div></div>
     </div>
   </div>
 </section>
@@ -367,8 +232,9 @@ section.active{display:block;}
   <h2 class="sec-title">My Works</h2>
   <div class="proj-grid">
 
-    <div>
-        <img src="assets/ha-cover.jpg"/>
+    <div class="proj-card" onclick="openModal('m1')">
+      <div class="proj-card-img">
+        <img src="assets/ha-cover.jpg" alt="Home Assistant"/>
       </div>
       <div class="proj-always-name">Home Assistant</div>
       <div class="proj-card-overlay">
@@ -380,8 +246,7 @@ section.active{display:block;}
 
     <div class="proj-card" onclick="openModal('m2')">
       <div class="proj-card-img">
-        <!-- REPLACE with: <img src="assets/vr-cover.jpg"/> -->
-        <div class="proj-card-placeholder"><div class="pci">🥽</div><p>Cover photo<br/><code>assets/vr-cover.jpg</code></p></div>
+        <img src="assets/vr-cover.jpg" alt="VR Workshop"/>
       </div>
       <div class="proj-always-name">Virtual Horizon — VR Workshop</div>
       <div class="proj-card-overlay">
@@ -392,8 +257,7 @@ section.active{display:block;}
 
     <div class="proj-card" onclick="openModal('m3')">
       <div class="proj-card-img">
-        <!-- REPLACE with: <img src="assets/robot-cover.jpg"/> -->
-        <div class="proj-card-placeholder"><div class="pci">🤖</div><p>Cover photo<br/><code>assets/robot-cover.jpg</code></p></div>
+        <img src="assets/robot-cover.jpg" alt="TSLV Robot"/>
       </div>
       <div class="proj-always-name">TSLV Robot</div>
       <div class="proj-card-overlay">
@@ -417,8 +281,6 @@ section.active{display:block;}
   </div>
 </section>
 
-<!-- ── MODALS ── -->
-
 <!-- MODAL 1: Home Assistant -->
 <div class="modal-overlay" id="m1" onclick="closeModal(event,this)">
   <div class="modal">
@@ -429,13 +291,13 @@ section.active{display:block;}
       <div class="modal-award">🏆 First Prize — INNOVIX / RISE 2026 at FISAT</div>
       <div class="modal-media-grid">
         <div class="modal-media-item modal-media-main">
-          <video src="assets/ha-1.mp4" controls></video> -->
+          <video src="assets/ha-1.mp4" controls></video>
         </div>
         <div class="modal-media-item">
-          <video src="assets/ha-2.mp4" controls></video> -->
+          <video src="assets/ha-2.mp4" controls></video>
         </div>
         <div class="modal-media-item">
-          <video src="assets/ha-3.mp4" controls></video> -->
+          <video src="assets/ha-3.mp4" controls></video>
         </div>
       </div>
       <div class="modal-sections">
@@ -457,9 +319,15 @@ section.active{display:block;}
       <div class="modal-date">Aug 2025 – Sep 2025 · Team Project</div>
       <div class="modal-title">Virtual Horizon — VR Workshop</div>
       <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main"><div class="modal-media-placeholder"><div class="mpi">📷</div><p>Main photo/video<br/><code>assets/vr-1.jpg</code></p></div></div>
-        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">📷</div><p><code>assets/vr-2.jpg</code></p></div></div>
-        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">🎥</div><p><code>assets/vr-3.mp4</code></p></div></div>
+        <div class="modal-media-item modal-media-main">
+          <img src="assets/vr-1.jpg" alt="VR Workshop 1"/>
+        </div>
+        <div class="modal-media-item">
+          <img src="assets/vr-2.jpg" alt="VR Workshop 2"/>
+        </div>
+        <div class="modal-media-item">
+          <img src="assets/vr-3.jpg" alt="VR Workshop 3"/>
+        </div>
       </div>
       <div class="modal-sections">
         <div>
@@ -480,9 +348,15 @@ section.active{display:block;}
       <div class="modal-date">Jan 2024 – Feb 2024 · Hardware Project</div>
       <div class="modal-title">TSLV Robot</div>
       <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main"><div class="modal-media-placeholder"><div class="mpi">📷</div><p>Main photo/video<br/><code>assets/robot-1.jpg</code></p></div></div>
-        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">📷</div><p><code>assets/robot-2.jpg</code></p></div></div>
-        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">🎥</div><p><code>assets/robot-3.mp4</code></p></div></div>
+        <div class="modal-media-item modal-media-main">
+          <img src="assets/robot-1.jpg" alt="TSLV Robot 1"/>
+        </div>
+        <div class="modal-media-item">
+          <img src="assets/robot-2.jpg" alt="TSLV Robot 2"/>
+        </div>
+        <div class="modal-media-item">
+          <img src="assets/robot-3.jpg" alt="TSLV Robot 3"/>
+        </div>
       </div>
       <div class="modal-sections">
         <div>
@@ -496,7 +370,6 @@ section.active{display:block;}
 </div>
 
 <script>
-// NAV
 function show(id,el){
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
@@ -504,33 +377,22 @@ function show(id,el){
   document.getElementById(id).classList.add('active');
   if(el&&el.tagName==='A'){
     el.classList.add('active');
-    // sync both navs
     const idx=[...document.querySelectorAll('.nav-links a')].findIndex(a=>a.textContent===el.textContent);
     if(idx>-1)document.querySelectorAll('.nav-links a')[idx].classList.add('active');
     const idx2=[...document.querySelectorAll('.hin')].findIndex(a=>a.textContent===el.textContent);
     if(idx2>-1)document.querySelectorAll('.hin')[idx2].classList.add('active');
   }
 }
-
-// TYPED TEXT
 const roles=['Embedded Systems Engineer','Robotics Enthusiast','ECE Student','ML Explorer'];
 let ri=0,ci=0,del=false;
 function typeEffect(){
-  const el=document.getElementById('typed-text');
-  if(!el)return;
+  const el=document.getElementById('typed-text');if(!el)return;
   const cur=roles[ri];
-  if(!del){
-    el.textContent=cur.substring(0,ci+1);ci++;
-    if(ci===cur.length){del=true;setTimeout(typeEffect,1800);return;}
-  }else{
-    el.textContent=cur.substring(0,ci-1);ci--;
-    if(ci===0){del=false;ri=(ri+1)%roles.length;}
-  }
+  if(!del){el.textContent=cur.substring(0,ci+1);ci++;if(ci===cur.length){del=true;setTimeout(typeEffect,1800);return;}}
+  else{el.textContent=cur.substring(0,ci-1);ci--;if(ci===0){del=false;ri=(ri+1)%roles.length;}}
   setTimeout(typeEffect,del?60:100);
 }
 typeEffect();
-
-// MODAL
 function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
 function closeModalById(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
 function closeModal(e,overlay){if(e.target===overlay){overlay.classList.remove('open');document.body.style.overflow='';}}
