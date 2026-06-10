@@ -4,389 +4,529 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Anandhu Biju | ECE Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#f5f5f5;--sidebar:#ffffff;--text:#111111;--muted:#555555;
-  --light:#999999;--accent-light:#f0f0f0;--border:#e0e0e0;--card:#fafafa;--sw:280px;
+  --bg:#0d0d0d;
+  --bg2:#111111;
+  --bg3:#161616;
+  --card:#1a1a1a;
+  --border:#2a2a2a;
+  --text:#f0f0f0;
+  --muted:#888888;
+  --light:#555555;
+  --accent:#4ade80;
+  --accent2:#22c55e;
 }
-body.dark{
-  --bg:#111111;--sidebar:#1a1a1a;--text:#f0f0f0;--muted:#aaaaaa;
-  --light:#666666;--accent-light:#2a2a2a;--border:#2a2a2a;--card:#222222;
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* BG TEXTURE */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
 }
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;transition:all .3s;}
-aside{width:var(--sw);min-height:100vh;background:var(--sidebar);position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1.8rem 2rem;border-right:1px solid var(--border);overflow-y:auto;transition:background .3s;}
-.avatar-wrap{width:110px;height:110px;border-radius:50%;overflow:hidden;border:3px solid var(--border);margin-bottom:1.4rem;flex-shrink:0;background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;color:var(--muted);}
-body.dark .avatar-wrap{background:#2a2a2a;}
-.avatar-wrap img{width:100%;height:100%;object-fit:cover;}
-.sname{font-size:1.05rem;font-weight:700;text-align:center;margin-bottom:.25rem;}
-.srole{font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;text-align:center;margin-bottom:.2rem;}
-.sloc{font-size:.7rem;color:var(--light);text-transform:uppercase;letter-spacing:.08em;text-align:center;margin-bottom:2rem;}
-nav{width:100%;margin-bottom:auto;}
-nav a{display:block;text-align:center;padding:.55rem .8rem;border-radius:8px;font-size:.875rem;font-weight:400;color:var(--muted);text-decoration:none;margin-bottom:.15rem;cursor:pointer;transition:background .2s,color .2s;}
-nav a:hover{color:var(--text);}
-nav a.active{background:var(--accent-light);color:var(--text);font-weight:600;}
-.slinks{display:flex;gap:1.2rem;margin-top:1.8rem;}
-.slinks a{font-size:.75rem;color:var(--light);text-decoration:none;transition:color .2s;}
-.slinks a:hover{color:var(--text);}
-.dtoggle{margin-top:1rem;border:1px solid var(--border);background:transparent;border-radius:20px;padding:.4rem 1.1rem;font-size:.78rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:.5rem;font-family:'Inter',sans-serif;transition:all .2s;}
-.dtoggle:hover{background:var(--accent-light);color:var(--text);}
-.main{margin-left:var(--sw);flex:1;}
-section{display:none;padding:3rem 3.5rem;min-height:100vh;}
+
+/* NAVBAR */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 5%;
+  background:rgba(13,13,13,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);cursor:pointer;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s;letter-spacing:.02em;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-links a.active{border-bottom:2px solid var(--accent);padding-bottom:.1rem;}
+
+/* SECTIONS */
+section{display:none;min-height:100vh;padding:8rem 8% 5rem;position:relative;z-index:1;}
 section.active{display:block;}
-.hero{display:flex;align-items:stretch;min-height:100vh;margin:-3rem -3.5rem;overflow:hidden;}
-.hero-text-wrap{flex:1;display:flex;align-items:center;padding:4rem 3.5rem;}
-.hero-text h1{font-size:3.6rem;font-weight:700;line-height:1.1;margin-bottom:1rem;letter-spacing:-.03em;}
-.hero-text h1 span{color:var(--muted);}
-.hero-text p{font-size:.95rem;color:var(--muted);max-width:420px;line-height:1.75;margin-bottom:2rem;}
-.hero-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem;}
-.tag{background:var(--accent-light);color:var(--text);font-size:.72rem;font-weight:500;padding:.28rem .75rem;border-radius:20px;border:1px solid var(--border);}
-.hero-img{width:42%;position:relative;overflow:hidden;flex-shrink:0;}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(20%);display:block;}
-.hero-img-placeholder{width:100%;height:100%;background:var(--accent-light);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--light);text-align:center;padding:2rem;}
-.hero-img-placeholder .hpi{font-size:3rem;margin-bottom:1rem;}
-.hero-img-placeholder p{font-size:.8rem;line-height:1.6;}
-.hero-img-placeholder code{background:var(--border);padding:.15rem .4rem;border-radius:4px;font-size:.75rem;font-family:monospace;margin-top:.4rem;display:inline-block;}
-.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--text);color:var(--sidebar);padding:.7rem 1.6rem;border-radius:8px;font-size:.88rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s;font-family:'Inter',sans-serif;}
-.btn:hover{opacity:.7;}
-.btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border);margin-left:.8rem;}
-.btn-outline:hover{background:var(--accent-light);}
-.sec-head{margin-bottom:2.5rem;}
-.sec-head h2{font-size:2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.3rem;}
-.sec-div{width:32px;height:2px;background:var(--text);margin:.5rem 0 .8rem;}
-.sec-head p{color:var(--muted);font-size:.9rem;}
-.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;}
-.about-bio{font-size:.92rem;line-height:1.85;color:var(--muted);margin-bottom:1.2rem;}
-.info-row{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:.9rem;}
-.info-icon{width:34px;height:34px;background:var(--accent-light);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
-.info-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--light);margin-bottom:.1rem;}
-.info-val{font-size:.88rem;font-weight:500;}
-.hobby-wrap{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem;}
-.hobby{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:.3rem .9rem;font-size:.8rem;}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
-.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;}
-.skill-card h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.8rem;font-weight:600;}
-.stag{display:inline-block;background:var(--accent-light);border:1px solid var(--border);color:var(--text);font-size:.78rem;padding:.22rem .65rem;border-radius:6px;margin:.18rem;}
-.timeline{position:relative;padding-left:1.5rem;}
+
+/* ── HOME ── */
+#home{display:none;padding:0;}
+#home.active{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding:0;}
+.home-bg{
+  position:absolute;inset:0;z-index:0;
+  /* REPLACE with: background:url('hero-bg.jpg') center/cover no-repeat; */
+  background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 50%,#0d0d0d 100%);
+}
+.home-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55);}
+.home-content{position:relative;z-index:1;padding:0 8%;display:flex;flex-direction:column;justify-content:center;min-height:100vh;}
+.home-eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:1.2rem;}
+.home-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.05;margin-bottom:1rem;letter-spacing:-.03em;}
+.home-subtitle{font-size:clamp(1rem,2.5vw,1.4rem);color:var(--muted);margin-bottom:2.5rem;font-weight:300;max-width:600px;line-height:1.5;}
+.home-subtitle span{color:var(--accent);font-weight:500;}
+.home-socials{display:flex;gap:1rem;margin-bottom:3rem;}
+.social-btn{
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);background:rgba(255,255,255,.04);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);text-decoration:none;font-size:.9rem;
+  transition:all .2s;cursor:pointer;
+}
+.social-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(74,222,128,.08);}
+.home-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent);color:#0d0d0d;padding:.8rem 2rem;border-radius:6px;font-size:.9rem;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s;text-decoration:none;}
+.home-cta:hover{opacity:.85;}
+.home-know{position:absolute;bottom:2.5rem;right:5%;z-index:1;font-size:.75rem;color:var(--light);letter-spacing:.05em;}
+.home-know span{color:var(--accent);}
+
+/* ── SECTION HEADER ── */
+.sec-eyebrow{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:.8rem;}
+.sec-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent);opacity:.4;}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;margin-bottom:3rem;}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;}
+.about-photo{
+  aspect-ratio:3/4;border-radius:12px;overflow:hidden;
+  background:var(--card);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--light);text-align:center;padding:2rem;
+}
+.about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.about-photo-placeholder .api{font-size:3rem;margin-bottom:.8rem;}
+.about-photo-placeholder p{font-size:.78rem;line-height:1.6;color:var(--muted);}
+.about-photo-placeholder code{font-size:.72rem;background:var(--border);padding:.15rem .4rem;border-radius:4px;font-family:monospace;margin-top:.3rem;display:inline-block;}
+.about-role{font-size:1.4rem;font-weight:700;color:var(--accent);font-family:'Space Grotesk',sans-serif;margin-bottom:.3rem;}
+.about-org{font-size:.9rem;color:var(--muted);margin-bottom:1.8rem;font-style:italic;}
+.about-info{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 2rem;margin-bottom:1.8rem;}
+.ai-row{display:flex;align-items:center;gap:.5rem;font-size:.88rem;}
+.ai-arrow{color:var(--accent);font-size:.8rem;flex-shrink:0;}
+.ai-label{color:var(--muted);font-weight:600;min-width:80px;}
+.ai-val{color:var(--text);}
+.about-bio{font-size:.92rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;}
+.about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.about-tag{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:var(--accent);font-size:.75rem;padding:.3rem .8rem;border-radius:20px;font-weight:500;}
+
+/* ── RESUME (Education + Skills) ── */
+.resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.resume-col h3{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:2rem;color:var(--text);}
+.timeline{position:relative;}
 .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border);}
-.titem{position:relative;margin-bottom:2.2rem;padding-left:1.5rem;}
-.tdot{position:absolute;left:-2rem;top:.35rem;width:10px;height:10px;border-radius:50%;background:var(--text);border:2px solid var(--sidebar);}
-.tdate{font-size:.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem;}
-.ttitle{font-size:.98rem;font-weight:600;margin-bottom:.2rem;}
-.tsub{font-size:.85rem;color:var(--muted);}
-.tscore{display:inline-block;margin-top:.4rem;background:var(--accent-light);border:1px solid var(--border);color:var(--text);font-size:.75rem;font-weight:600;padding:.2rem .65rem;border-radius:6px;}
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
-.proj-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s;cursor:pointer;}
-.proj-card:hover{border-color:var(--text);transform:translateY(-3px);}
-.proj-card:hover .view-more{opacity:1;}
-.proj-media{width:100%;height:200px;background:#e8e8e8;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-body.dark .proj-media{background:#2a2a2a;}
-.proj-media img,.proj-media video{width:100%;height:100%;object-fit:cover;display:block;}
-.proj-placeholder{text-align:center;color:var(--light);}
-.proj-placeholder.tall{padding:2rem;}
-.proj-placeholder .pi{font-size:2.2rem;margin-bottom:.5rem;}
-.proj-placeholder p{font-size:.73rem;line-height:1.5;}
-.proj-placeholder code{font-size:.7rem;font-family:monospace;background:var(--border);padding:.1rem .35rem;border-radius:4px;margin-top:.3rem;display:inline-block;}
-.proj-body{padding:1.2rem 1.3rem;}
-.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;}
-.proj-title{font-size:.92rem;font-weight:600;line-height:1.3;}
-.proj-date{font-size:.7rem;color:var(--light);white-space:nowrap;margin-left:.5rem;}
-.proj-short{font-size:.82rem;color:var(--muted);line-height:1.55;margin-bottom:.6rem;}
-.proj-desc{font-size:.83rem;color:var(--muted);line-height:1.65;}
-.proj-desc ul{padding-left:1.1rem;margin-top:.4rem;}
-.proj-desc li{margin-bottom:.3rem;}
-.view-more{font-size:.78rem;font-weight:600;color:var(--text);margin-top:.7rem;opacity:.4;transition:opacity .2s;}
-.award{display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;background:var(--accent-light);border:1px solid var(--border);border-radius:20px;padding:.28rem .8rem;font-size:.72rem;font-weight:600;}
+.titem{position:relative;padding-left:1.8rem;margin-bottom:2.2rem;}
+.tdot{position:absolute;left:-.4rem;top:.3rem;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(74,222,128,.4);}
+.tdate-badge{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:4px;font-size:.72rem;font-weight:600;padding:.2rem .7rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.04em;}
+.ttitle{font-size:.95rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.2rem;}
+.tsub{font-size:.85rem;color:var(--muted);font-style:italic;margin-bottom:.4rem;}
+.tdesc{font-size:.83rem;color:var(--light);line-height:1.6;}
+.skill-group{margin-bottom:1.8rem;}
+.skill-group h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin-bottom:.8rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.stag{background:var(--card);border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:.3rem .8rem;border-radius:6px;transition:border-color .2s;}
+.stag:hover{border-color:var(--accent);}
+.download-cv{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--accent);color:var(--accent);background:transparent;padding:.6rem 1.4rem;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;margin-bottom:2rem;text-decoration:none;}
+.download-cv:hover{background:rgba(74,222,128,.08);}
 
-/* BACK BUTTON */
-.back-btn{display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:1px solid var(--border);border-radius:8px;padding:.5rem 1.1rem;font-size:.85rem;font-weight:500;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:2rem;transition:all .2s;}
-.back-btn:hover{background:var(--accent-light);color:var(--text);}
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.proj-card{
+  background:var(--card);border:2px solid var(--border);border-radius:10px;
+  overflow:hidden;cursor:pointer;position:relative;
+  transition:border-color .25s,transform .25s;
+  aspect-ratio:4/3;
+}
+.proj-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+.proj-card-img{width:100%;height:100%;object-fit:cover;display:flex;align-items:center;justify-content:center;background:var(--bg3);}
+.proj-card-img img{width:100%;height:100%;object-fit:cover;}
+.proj-card-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;color:var(--light);text-align:center;padding:1.5rem;}
+.proj-card-placeholder .pci{font-size:2.8rem;margin-bottom:.8rem;}
+.proj-card-placeholder p{font-size:.75rem;line-height:1.5;}
+.proj-card-placeholder code{font-size:.7rem;background:var(--border);padding:.1rem .35rem;border-radius:4px;font-family:monospace;margin-top:.3rem;display:inline-block;}
+.proj-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 60%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.2rem 1.3rem;
+  opacity:0;transition:opacity .25s;
+}
+.proj-card:hover .proj-card-overlay{opacity:1;}
+.proj-card-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
+.proj-card-short{font-size:.75rem;color:rgba(255,255,255,.65);line-height:1.4;}
+.proj-card-badge{position:absolute;top:.8rem;right:.8rem;background:var(--accent);color:#0d0d0d;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;opacity:0;transition:opacity .25s;}
+.proj-card:hover .proj-card-badge{opacity:1;}
+.proj-always-name{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);padding:.8rem 1rem .7rem;font-size:.85rem;font-weight:600;color:#fff;}
 
-/* PROJECT DETAIL */
-.pd-header{margin-bottom:1.5rem;}
-.pd-date{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:.4rem;}
-.pd-title{font-size:1.8rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;}
+/* ── PROJECT MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.85);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{
+  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
+  width:100%;max-width:900px;max-height:85vh;overflow-y:auto;
+  transform:translateY(20px);transition:transform .3s;
+}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal-close{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:flex-end;
+  padding:1rem 1.2rem .5rem;
+  background:var(--bg2);
+}
+.modal-close button{background:var(--card);border:1px solid var(--border);color:var(--muted);width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
+.modal-close button:hover{border-color:var(--accent);color:var(--accent);}
+.modal-body{padding:0 2rem 2.5rem;}
+.modal-date{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem;}
+.modal-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem;line-height:1.2;}
+.modal-award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);border-radius:20px;padding:.3rem .9rem;font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:1.5rem;}
+.modal-media-grid{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:200px 200px;gap:.6rem;margin-bottom:2rem;border-radius:10px;overflow:hidden;}
+.modal-media-item{background:var(--bg3);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.modal-media-item img,.modal-media-item video{width:100%;height:100%;object-fit:cover;display:block;}
+.modal-media-main{grid-row:span 2;}
+.modal-media-placeholder{text-align:center;color:var(--light);padding:1rem;}
+.modal-media-placeholder .mpi{font-size:1.8rem;margin-bottom:.4rem;}
+.modal-media-placeholder p{font-size:.68rem;line-height:1.4;}
+.modal-media-placeholder code{font-size:.65rem;background:var(--border);padding:.1rem .3rem;border-radius:3px;font-family:monospace;margin-top:.2rem;display:inline-block;}
+.modal-sections{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;}
+.modal-sec h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.modal-sec h4::after{content:'';flex:1;height:1px;background:var(--border);}
+.modal-sec p{font-size:.88rem;color:var(--muted);line-height:1.75;}
+.modal-sec ul{padding-left:1rem;}
+.modal-sec li{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:.35rem;}
+.modal-sec li::marker{color:var(--accent);}
+.modal-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
+.modal-tag{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.15);color:var(--accent);font-size:.75rem;padding:.25rem .7rem;border-radius:6px;}
 
-/* MEDIA GRID */
-.pd-media-grid{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:auto auto;gap:.75rem;margin-bottom:2rem;}
-.pd-media-item{border-radius:12px;overflow:hidden;background:#e8e8e8;min-height:160px;display:flex;align-items:center;justify-content:center;}
-body.dark .pd-media-item{background:#2a2a2a;}
-.pd-media-item img,.pd-media-item video{width:100%;height:100%;object-fit:cover;display:block;}
-.pd-media-main{grid-row:span 2;min-height:340px;}
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:700px;}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s;}
+.contact-card:hover{border-color:var(--accent);}
+.cc-icon{width:42px;height:42px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.cc-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem;}
+.cc-val{font-size:.9rem;font-weight:500;}
+.cc-val a{color:var(--text);text-decoration:none;}
+.cc-val a:hover{color:var(--accent);}
 
-/* DETAIL BODY */
-.pd-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;}
-.pd-section h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin-bottom:.7rem;}
-.pd-section p{font-size:.88rem;color:var(--muted);line-height:1.7;}
-.pd-section ul{padding-left:1.1rem;}
-.pd-section li{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.35rem;}
-
-@media(max-width:900px){.pd-media-grid{grid-template-columns:1fr 1fr;}.pd-media-main{grid-row:span 1;}.pd-body{grid-template-columns:1fr;gap:1rem;}}
-@media(max-width:600px){.pd-media-grid{grid-template-columns:1fr;}.pd-media-main{min-height:220px;}}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;}
-.cert-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:flex;gap:.8rem;}
-.cert-icon{width:36px;height:36px;background:var(--accent-light);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+/* CERTS */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.3rem;display:flex;gap:.8rem;align-items:flex-start;transition:border-color .2s;}
+.cert-card:hover{border-color:var(--accent);}
+.cert-icon{width:36px;height:36px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
 .cert-title{font-size:.87rem;font-weight:600;margin-bottom:.2rem;}
 .cert-org{font-size:.77rem;color:var(--muted);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.contact-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.3rem;display:flex;gap:.9rem;align-items:flex-start;}
-.ci{width:38px;height:38px;background:var(--accent-light);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-.cl{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--light);margin-bottom:.2rem;}
-.cv{font-size:.88rem;font-weight:500;word-break:break-all;}
-.cv a{color:var(--text);text-decoration:underline;text-underline-offset:3px;}
-@media(max-width:1100px){.hero-img{width:38%;}}
-@media(max-width:900px){:root{--sw:240px;}section{padding:2rem 1.5rem;}.hero{flex-direction:column;margin:-2rem -1.5rem;min-height:auto;}.hero-text-wrap{padding:3rem 1.5rem;}.hero-img{width:100%;height:320px;}.hero-text h1{font-size:2.6rem;}.about-grid{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}}
-@media(max-width:640px){.main{margin-left:0;}body{flex-direction:column;}aside{width:100%;min-height:auto;position:relative;padding:1.5rem 1rem;}.hero-img{height:260px;}}
+
+@media(max-width:1024px){.proj-grid{grid-template-columns:repeat(2,1fr);}.resume-grid{grid-template-columns:1fr;}.about-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){.nav-links{display:none;}.proj-grid{grid-template-columns:1fr 1fr;}.modal-media-grid{grid-template-columns:1fr;grid-template-rows:auto;}.modal-media-main{grid-row:span 1;}.modal-sections{grid-template-columns:1fr;}.about-info{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}}
+@media(max-width:500px){.proj-grid{grid-template-columns:1fr;}}
 </style>
 </head>
-<body id="body">
+<body>
 
-<aside>
-  <!-- PHOTO: Replace this div with <img src="photo.jpg"/> after uploading to GitHub -->
-  <div class="avatar-wrap">AB</div>
-  <div class="sname">Anandhu Biju</div>
-  <div class="srole">ECE Engineer</div>
-  <div class="sloc">Thodupuzha, Kerala</div>
-  <nav>
-    <a class="active" onclick="show('home',this)">Home</a>
-    <a onclick="show('about',this)">About</a>
-    <a onclick="show('skills',this)">Skills</a>
-    <a onclick="show('education',this)">Education</a>
-    <a onclick="show('projects',this)">Projects</a>
-    <a onclick="show('certifications',this)">Certifications</a>
-    <a onclick="show('contact',this)">Contact</a>
-  </nav>
-  <div class="slinks">
-    <a href="https://github.com/ANANDHU-BIJU/" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">LinkedIn</a>
-    <a href="mailto:anandhubijua2004@gmail.com">Email</a>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo" onclick="show('home',this)">Anandhu Biju</div>
+  <ul class="nav-links">
+    <li><a class="active" onclick="show('home',this)">Home</a></li>
+    <li><a onclick="show('about',this)">About</a></li>
+    <li><a onclick="show('resume',this)">Resume</a></li>
+    <li><a onclick="show('projects',this)">Projects</a></li>
+    <li><a onclick="show('contact',this)">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="home-bg">
+    <!-- REPLACE background in CSS with: background:url('hero-bg.jpg') center/cover no-repeat; -->
   </div>
-  <button class="dtoggle" id="dtoggle" onclick="toggleDark()">🌙 Dark</button>
-</aside>
-
-<div class="main">
-
-  <section id="home" class="active">
-    <div class="hero">
-      <div class="hero-text-wrap">
-        <div class="hero-text">
-          <h1>I am<br/><span>an Engineer</span></h1>
-          <div class="hero-tags">
-            <span class="tag">Electronics & Communication</span>
-            <span class="tag">Embedded Systems</span>
-            <span class="tag">Robotics</span>
-          </div>
-          <p>Fourth-year ECE student with a minor in Computer Science at FISAT. Passionate about building intelligent systems where software meets hardware.</p>
-          <button class="btn btn-outline" onclick="show('contact',document.querySelectorAll('nav a')[6])">Contact Me</button>
-        </div>
-      </div>
-      <div class="hero-img">
-        <!-- REPLACE THIS with: <img src="hero.jpg" alt="Anandhu Biju"/> after uploading a portrait photo to your repo -->
-        <div class="hero-img-placeholder">
-          <div class="hpi">📷</div>
-          <p>Upload a portrait photo<br/>and replace this block with:<br/><code>&lt;img src="hero.jpg"/&gt;</code></p>
-        </div>
-      </div>
+  <div class="home-content">
+    <div class="home-eyebrow">Electronics & Communication Engineer</div>
+    <h1 class="home-title">Anandhu Biju</h1>
+    <p class="home-subtitle">A <span id="typed-text">Embedded Systems Engineer</span> from Kerala, India</p>
+    <div class="home-socials">
+      <a class="social-btn" href="https://github.com/ANANDHU-BIJU/" target="_blank" title="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a class="social-btn" href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank" title="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a class="social-btn" href="mailto:anandhubijua2004@gmail.com" title="Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      </a>
     </div>
-  </section>
+    <button class="home-cta" onclick="show('projects',document.querySelectorAll('.nav-links a')[3])">View My Projects</button>
+  </div>
+</section>
 
-  <section id="about">
-    <div class="sec-head"><h2>About Me</h2><div class="sec-div"></div><p>Bridging hardware and software across embedded systems, robotics, and AI</p></div>
-    <div class="about-grid">
-      <div>
-        <p class="about-bio">Motivated fourth-year Electronics and Communication Engineering student with a minor in Computer Science. Strong interests in Embedded Systems, Robotics, and Machine Learning.</p>
-        <p class="about-bio">Hands-on experience with Arduino, Raspberry Pi, ESP32, sensors, actuators, and robotics. Focused on integrating AI with embedded systems and developing intelligent solutions on resource-constrained hardware.</p>
-        <p class="about-bio">Strong problem-solving skills and a multidisciplinary background spanning both hardware and software.</p>
-      </div>
-      <div>
-        <div class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Location</div><div class="info-val">Thodupuzha, Kerala, India</div></div></div>
-        <div class="info-row"><div class="info-icon">🎓</div><div><div class="info-label">Degree</div><div class="info-val">B.Tech ECE (Minor: CS) · CGPA 8.84</div></div></div>
-        <div class="info-row"><div class="info-icon">🏫</div><div><div class="info-label">University</div><div class="info-val">FISAT, Angamaly · APJ Abdul Kalam TU</div></div></div>
-        <div class="info-row"><div class="info-icon">📧</div><div><div class="info-label">Email</div><div class="info-val">anandhubijua2004@gmail.com</div></div></div>
-        <div class="info-row"><div class="info-icon">🌐</div><div><div class="info-label">Languages</div><div class="info-val">English, Malayalam</div></div></div>
-        <div style="margin-top:1rem;"><div class="info-label" style="margin-bottom:.5rem;">Hobbies</div>
-        <div class="hobby-wrap"><span class="hobby">🤖 Robotics & AI</span><span class="hobby">🖨️ 3D Modelling</span><span class="hobby">🔌 PCB Design</span><span class="hobby">🔬 Emerging Tech</span><span class="hobby">🛠️ Workshops</span></div></div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-eyebrow">About</div>
+  <h2 class="sec-title">Learn More About Me</h2>
+  <div class="about-grid">
+    <div class="about-photo">
+      <!-- REPLACE with: <img src="photo.jpg" alt="Anandhu Biju"/> -->
+      <div class="about-photo-placeholder">
+        <div class="api">📷</div>
+        <p>Upload your photo<br/>and replace with:<br/><code>&lt;img src="photo.jpg"/&gt;</code></p>
       </div>
     </div>
-  </section>
-
-  <section id="skills">
-    <div class="sec-head"><h2>Skills</h2><div class="sec-div"></div><p>Hardware and software expertise across embedded systems, robotics, and dev tools</p></div>
-    <div class="skills-grid">
-      <div class="skill-card"><h4>Programming</h4><span class="stag">C</span><span class="stag">Python</span><span class="stag">Embedded C</span></div>
-      <div class="skill-card"><h4>Embedded & Robotics</h4><span class="stag">Arduino</span><span class="stag">Raspberry Pi</span><span class="stag">ESP32</span><span class="stag">Sensors</span><span class="stag">Actuators</span></div>
-      <div class="skill-card"><h4>Tools & Software</h4><span class="stag">Linux</span><span class="stag">VS Code</span><span class="stag">KiCad</span><span class="stag">Autodesk Fusion</span><span class="stag">Unity</span></div>
-      <div class="skill-card"><h4>Focus Areas</h4><span class="stag">Machine Learning</span><span class="stag">Computer Vision</span><span class="stag">AI on Edge</span><span class="stag">FPGA / Verilog</span></div>
+    <div>
+      <div class="about-role">Electronics & Communication Engineer</div>
+      <div class="about-org">FISAT, Angamaly · APJ Abdul Kalam Technological University</div>
+      <div class="about-info">
+        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Degree:</span><span class="ai-val">B.Tech ECE (Minor: CS)</span></div>
+        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">CGPA:</span><span class="ai-val">8.84</span></div>
+        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">City:</span><span class="ai-val">Thodupuzha, Kerala</span></div>
+        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Email:</span><span class="ai-val">anandhubijua2004@gmail.com</span></div>
+        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Languages:</span><span class="ai-val">English, Malayalam</span></div>
+        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Year:</span><span class="ai-val">4th Year (2023–Present)</span></div>
+      </div>
+      <p class="about-bio">Motivated fourth-year ECE student with a minor in Computer Science. Strong interests in Embedded Systems, Robotics, and Machine Learning. Hands-on experience with Arduino, Raspberry Pi, ESP32, sensors, actuators, and robotics.</p>
+      <p class="about-bio">Particularly focused on integrating AI with embedded systems and developing intelligent solutions on resource-constrained hardware. Strong problem-solving skills and a multidisciplinary background spanning both hardware and software.</p>
+      <div class="about-tags">
+        <span class="about-tag">🤖 Robotics & AI</span>
+        <span class="about-tag">🖨️ 3D Modelling</span>
+        <span class="about-tag">🔌 PCB Design</span>
+        <span class="about-tag">🔬 Emerging Tech</span>
+        <span class="about-tag">🛠️ Workshops</span>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="education">
-    <div class="sec-head"><h2>Education</h2><div class="sec-div"></div></div>
-    <div class="timeline">
-      <div class="titem"><div class="tdot"></div><div class="tdate">Sep 2023 – Present</div><div class="ttitle">B.Tech in Electronics and Communication Engineering</div><div class="tsub">Minor in CS · FISAT, Angamaly · APJ Abdul Kalam Technological University</div><span class="tscore">CGPA: 8.84</span></div>
-      <div class="titem"><div class="tdot"></div><div class="tdate">Jun 2021 – Mar 2023</div><div class="ttitle">Higher Secondary Education (Class XII)</div><div class="tsub">State Board · St. George Higher Secondary School, Thodupuzha</div><span class="tscore">97.3%</span></div>
-      <div class="titem"><div class="tdot"></div><div class="tdate">Jun 2020 – Mar 2021</div><div class="ttitle">Secondary School (Class X)</div><div class="tsub">CBSE · Vimala Public School, Thodupuzha</div><span class="tscore">95.6%</span></div>
+<!-- RESUME -->
+<section id="resume">
+  <div class="sec-eyebrow">Resume</div>
+  <h2 class="sec-title">Education & Skills</h2>
+  <div style="margin-bottom:2rem;">
+    <!-- <a class="download-cv" href="resume.pdf" download>⬇ Download CV</a> -->
+  </div>
+  <div class="resume-grid">
+    <div class="resume-col">
+      <h3>Education</h3>
+      <div class="timeline">
+        <div class="titem">
+          <div class="tdot"></div>
+          <div class="ttitle">B.Tech — Electronics & Communication Engineering</div>
+          <div class="tdate-badge">Sep 2023 – Present</div>
+          <div class="tsub">Minor in CS · FISAT, Angamaly · APJ Abdul Kalam TU</div>
+          <div class="tdesc">CGPA: 8.84</div>
+        </div>
+        <div class="titem">
+          <div class="tdot"></div>
+          <div class="ttitle">Higher Secondary (Class XII)</div>
+          <div class="tdate-badge">Jun 2021 – Mar 2023</div>
+          <div class="tsub">State Board · St. George Higher Secondary School, Thodupuzha</div>
+          <div class="tdesc">Percentage: 97.3%</div>
+        </div>
+        <div class="titem">
+          <div class="tdot"></div>
+          <div class="ttitle">Secondary School (Class X)</div>
+          <div class="tdate-badge">Jun 2020 – Mar 2021</div>
+          <div class="tsub">CBSE · Vimala Public School, Thodupuzha</div>
+          <div class="tdesc">Percentage: 95.6%</div>
+        </div>
+      </div>
+      <h3 style="margin-top:2.5rem;">Certifications</h3>
+      <div class="timeline">
+        <div class="titem"><div class="tdot"></div><div class="ttitle">FPGA Prototyping Using Verilog HDL</div><div class="tsub">NIELIT</div></div>
+        <div class="titem"><div class="tdot"></div><div class="ttitle">Python for Data Science</div><div class="tsub">NPTEL</div></div>
+        <div class="titem"><div class="tdot"></div><div class="ttitle">Machine Learning</div><div class="tsub">NSDC</div></div>
+        <div class="titem"><div class="tdot"></div><div class="ttitle">NCC B Certificate</div><div class="tsub">National Cadet Corps</div></div>
+      </div>
     </div>
-  </section>
+    <div class="resume-col">
+      <h3>Skills</h3>
+      <div class="skill-group">
+        <h4>Programming Languages</h4>
+        <div class="skill-tags"><span class="stag">C</span><span class="stag">Python</span><span class="stag">Embedded C</span></div>
+      </div>
+      <div class="skill-group">
+        <h4>Embedded & Robotics</h4>
+        <div class="skill-tags"><span class="stag">Arduino</span><span class="stag">Raspberry Pi</span><span class="stag">ESP32</span><span class="stag">Sensors</span><span class="stag">Actuators</span></div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools & Software</h4>
+        <div class="skill-tags"><span class="stag">Linux</span><span class="stag">VS Code</span><span class="stag">KiCad</span><span class="stag">Autodesk Fusion</span><span class="stag">Unity</span></div>
+      </div>
+      <div class="skill-group">
+        <h4>Focus Areas</h4>
+        <div class="skill-tags"><span class="stag">Machine Learning</span><span class="stag">Computer Vision</span><span class="stag">AI on Edge</span><span class="stag">FPGA / Verilog</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="projects">
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-eyebrow">Projects</div>
+  <h2 class="sec-title">My Works</h2>
+  <div class="proj-grid">
 
-    <!-- GRID VIEW -->
-    <div id="proj-grid-view">
-      <div class="sec-head"><h2>Projects</h2><div class="sec-div"></div><p>Click a project to see full details</p></div>
-      <div class="proj-grid">
+    <div class="proj-card" onclick="openModal('m1')">
+      <div class="proj-card-img">
+        <!-- REPLACE with: <img src="assets/ha-cover.jpg"/> -->
+        <div class="proj-card-placeholder"><div class="pci">🏠</div><p>Cover photo<br/><code>assets/ha-cover.jpg</code></p></div>
+      </div>
+      <div class="proj-always-name">Home Assistant</div>
+      <div class="proj-card-overlay">
+        <div class="proj-card-name">Human-Centric Embodied Home Assistant</div>
+        <div class="proj-card-short">Computer vision + voice + embedded control · Raspberry Pi + ESP32</div>
+      </div>
+      <div class="proj-card-badge">🏆 First Prize</div>
+    </div>
 
-        <div class="proj-card" onclick="openProject('p1')">
-          <div class="proj-media">
-            <!-- REPLACE with: <img src="assets/home-assistant.jpg"/> -->
-            <div class="proj-placeholder"><div class="pi">🏠</div><p>Upload cover photo<br/>→ assets/home-assistant.jpg</p></div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-top"><div class="proj-title">Human-Centric Embodied Home Assistant</div><div class="proj-date">Jan–Mar 2026</div></div>
-            <div class="proj-short">Computer vision + voice + embedded control on Raspberry Pi & ESP32.</div>
-            <div class="award">🏆 First Prize — INNOVIX / RISE 2026</div>
-            <div class="view-more">View Details →</div>
-          </div>
-        </div>
-
-        <div class="proj-card" onclick="openProject('p2')">
-          <div class="proj-media">
-            <!-- REPLACE with: <img src="assets/vr-workshop.jpg"/> -->
-            <div class="proj-placeholder"><div class="pi">🥽</div><p>Upload cover photo<br/>→ assets/vr-workshop.jpg</p></div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-top"><div class="proj-title">Virtual Horizon — VR Workshop</div><div class="proj-date">Aug–Sep 2025</div></div>
-            <div class="proj-short">VR application built in Unity, presented to school students.</div>
-            <div class="view-more">View Details →</div>
-          </div>
-        </div>
-
-        <div class="proj-card" onclick="openProject('p3')">
-          <div class="proj-media">
-            <!-- REPLACE with: <img src="assets/tslv-robot.jpg"/> -->
-            <div class="proj-placeholder"><div class="pi">🤖</div><p>Upload cover photo<br/>→ assets/tslv-robot.jpg</p></div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-top"><div class="proj-title">TSLV Robot</div><div class="proj-date">Jan–Feb 2024</div></div>
-            <div class="proj-short">ESP32-based Wi-Fi robot with OLED display and touch sensors.</div>
-            <div class="view-more">View Details →</div>
-          </div>
-        </div>
-
+    <div class="proj-card" onclick="openModal('m2')">
+      <div class="proj-card-img">
+        <!-- REPLACE with: <img src="assets/vr-cover.jpg"/> -->
+        <div class="proj-card-placeholder"><div class="pci">🥽</div><p>Cover photo<br/><code>assets/vr-cover.jpg</code></p></div>
+      </div>
+      <div class="proj-always-name">Virtual Horizon — VR Workshop</div>
+      <div class="proj-card-overlay">
+        <div class="proj-card-name">Virtual Horizon — VR Workshop</div>
+        <div class="proj-card-short">Unity VR app · Education & tourism · Team project</div>
       </div>
     </div>
 
-    <!-- DETAIL VIEW -->
-    <div id="proj-detail-view" style="display:none;">
+    <div class="proj-card" onclick="openModal('m3')">
+      <div class="proj-card-img">
+        <!-- REPLACE with: <img src="assets/robot-cover.jpg"/> -->
+        <div class="proj-card-placeholder"><div class="pci">🤖</div><p>Cover photo<br/><code>assets/robot-cover.jpg</code></p></div>
+      </div>
+      <div class="proj-always-name">TSLV Robot</div>
+      <div class="proj-card-overlay">
+        <div class="proj-card-name">TSLV Robot</div>
+        <div class="proj-card-short">ESP32 Wi-Fi robot · OLED expressions · Touch sensors</div>
+      </div>
+    </div>
 
-      <button class="back-btn" onclick="closeProject()">← Back to Projects</button>
+  </div>
+</section>
 
-      <!-- PROJECT 1 DETAIL -->
-      <div id="p1" class="proj-detail" style="display:none;">
-        <div class="pd-header">
-          <div>
-            <div class="pd-date">Jan 2026 – Mar 2026</div>
-            <h2 class="pd-title">Human-Centric Embodied Home Assistant</h2>
-            <div class="award" style="margin-top:.7rem;">🏆 First Prize — INNOVIX / RISE 2026 at FISAT</div>
-          </div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-eyebrow">Contact</div>
+  <h2 class="sec-title">Get In Touch</h2>
+  <div class="contact-grid">
+    <div class="contact-card"><div class="cc-icon">📧</div><div><div class="cc-label">Email</div><div class="cc-val"><a href="mailto:anandhubijua2004@gmail.com">anandhubijua2004@gmail.com</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon">💼</div><div><div class="cc-label">LinkedIn</div><div class="cc-val"><a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">linkedin.com/in/anandhu-biju--</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon">🐙</div><div><div class="cc-label">GitHub</div><div class="cc-val"><a href="https://github.com/ANANDHU-BIJU/" target="_blank">github.com/ANANDHU-BIJU</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon">📍</div><div><div class="cc-label">Location</div><div class="cc-val">Thodupuzha, Kerala, India</div></div></div>
+  </div>
+</section>
+
+<!-- ── MODALS ── -->
+
+<!-- MODAL 1: Home Assistant -->
+<div class="modal-overlay" id="m1" onclick="closeModal(event,this)">
+  <div class="modal">
+    <div class="modal-close"><button onclick="closeModalById('m1')">✕</button></div>
+    <div class="modal-body">
+      <div class="modal-date">Jan 2026 – Mar 2026 · Mini Project</div>
+      <div class="modal-title">Human-Centric Embodied Home Assistant</div>
+      <div class="modal-award">🏆 First Prize — INNOVIX / RISE 2026 at FISAT</div>
+      <div class="modal-media-grid">
+        <div class="modal-media-item modal-media-main">
+          <!-- REPLACE with: <img src="assets/ha-1.jpg"/> or <video src="assets/ha-1.mp4" controls></video> -->
+          <div class="modal-media-placeholder"><div class="mpi">📷</div><p>Main photo/video<br/><code>assets/ha-1.jpg</code></p></div>
         </div>
-        <div class="pd-media-grid">
-          <!-- REPLACE each placeholder with <img src="assets/ha-1.jpg"/> or <video src="assets/ha-1.mp4" controls></video> -->
-          <div class="pd-media-item pd-media-main"><div class="proj-placeholder tall"><div class="pi">📷</div><p>Main photo<br/><code>assets/ha-1.jpg</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">📷</div><p><code>assets/ha-2.jpg</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">🎥</div><p><code>assets/ha-3.mp4</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">📷</div><p><code>assets/ha-4.jpg</code></p></div></div>
+        <div class="modal-media-item">
+          <!-- REPLACE with: <img src="assets/ha-2.jpg"/> -->
+          <div class="modal-media-placeholder"><div class="mpi">📷</div><p><code>assets/ha-2.jpg</code></p></div>
         </div>
-        <div class="pd-body">
-          <div class="pd-section"><h4>Overview</h4><p>A human-aware home assistant that integrates computer vision, voice interaction, and embedded control. Designed to run efficiently on resource-constrained hardware for real-world smart home and assistive applications.</p></div>
-          <div class="pd-section"><h4>Key Features</h4><ul><li>Computer vision for human detection and tracking using Raspberry Pi Camera</li><li>Voice interaction module for natural language commands</li><li>ESP32 handles peripheral control — lights, motors, actuators</li><li>OLED display for feedback and status</li><li>Resource-efficient pipeline optimised for edge deployment</li></ul></div>
-          <div class="pd-section"><h4>Tech Stack</h4><div class="hobby-wrap"><span class="hobby">Raspberry Pi</span><span class="hobby">ESP32</span><span class="hobby">Python</span><span class="hobby">OpenCV</span><span class="hobby">Embedded C</span><span class="hobby">Sensors & Actuators</span></div></div>
+        <div class="modal-media-item">
+          <!-- REPLACE with: <img src="assets/ha-3.jpg"/> or <video src="assets/ha-3.mp4" controls></video> -->
+          <div class="modal-media-placeholder"><div class="mpi">🎥</div><p><code>assets/ha-3.mp4</code></p></div>
         </div>
       </div>
-
-      <!-- PROJECT 2 DETAIL -->
-      <div id="p2" class="proj-detail" style="display:none;">
-        <div class="pd-header">
-          <div>
-            <div class="pd-date">Aug 2025 – Sep 2025</div>
-            <h2 class="pd-title">Virtual Horizon — VR Workshop</h2>
-          </div>
+      <div class="modal-sections">
+        <div>
+          <div class="modal-sec"><h4>Overview</h4><p>A human-aware home assistant integrating computer vision, voice interaction, and embedded control. Designed to run on resource-constrained hardware for real-world smart home and assistive applications.</p></div>
+          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul><li>Human detection and tracking using computer vision on Raspberry Pi Camera</li><li>Voice interaction module for natural language commands</li><li>ESP32 handles peripheral control — lights, motors, actuators</li><li>OLED display for system feedback and status</li><li>Resource-efficient pipeline optimised for edge deployment</li></ul></div>
         </div>
-        <div class="pd-media-grid">
-          <div class="pd-media-item pd-media-main"><div class="proj-placeholder tall"><div class="pi">📷</div><p>Main photo<br/><code>assets/vr-1.jpg</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">📷</div><p><code>assets/vr-2.jpg</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">🎥</div><p><code>assets/vr-3.mp4</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">📷</div><p><code>assets/vr-4.jpg</code></p></div></div>
-        </div>
-        <div class="pd-body">
-          <div class="pd-section"><h4>Overview</h4><p>A team project building a virtual reality application using Unity, designed to introduce VR technology to school students through hands-on demonstrations and presentations.</p></div>
-          <div class="pd-section"><h4>Key Features</h4><ul><li>Immersive VR environment built in Unity</li><li>Educational and tourism-themed VR scenes</li><li>Presented concepts of VR hardware setup and real-world applications</li><li>Interactive demo sessions for school students</li></ul></div>
-          <div class="pd-section"><h4>Tech Stack</h4><div class="hobby-wrap"><span class="hobby">Unity</span><span class="hobby">C#</span><span class="hobby">VR SDK</span><span class="hobby">3D Modelling</span></div></div>
-        </div>
+        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">Raspberry Pi</span><span class="modal-tag">ESP32</span><span class="modal-tag">Python</span><span class="modal-tag">OpenCV</span><span class="modal-tag">Embedded C</span><span class="modal-tag">Sensors</span><span class="modal-tag">Actuators</span></div></div>
       </div>
+    </div>
+  </div>
+</div>
 
-      <!-- PROJECT 3 DETAIL -->
-      <div id="p3" class="proj-detail" style="display:none;">
-        <div class="pd-header">
-          <div>
-            <div class="pd-date">Jan 2024 – Feb 2024</div>
-            <h2 class="pd-title">TSLV Robot</h2>
-          </div>
-        </div>
-        <div class="pd-media-grid">
-          <div class="pd-media-item pd-media-main"><div class="proj-placeholder tall"><div class="pi">📷</div><p>Main photo<br/><code>assets/robot-1.jpg</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">📷</div><p><code>assets/robot-2.jpg</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">🎥</div><p><code>assets/robot-3.mp4</code></p></div></div>
-          <div class="pd-media-item"><div class="proj-placeholder"><div class="pi">📷</div><p><code>assets/robot-4.jpg</code></p></div></div>
-        </div>
-        <div class="pd-body">
-          <div class="pd-section"><h4>Overview</h4><p>An ESP32-based robot with Wi-Fi-enabled motion control operated through a mobile phone interface. Designed to explore embedded systems, robotics, and human-robot interaction with expressive feedback.</p></div>
-          <div class="pd-section"><h4>Key Features</h4><ul><li>Wi-Fi control via mobile browser interface using ESP32</li><li>Touch sensors for interactive input</li><li>OLED display showing facial expressions and status feedback</li><li>Custom chassis and motor driver integration</li></ul></div>
-          <div class="pd-section"><h4>Tech Stack</h4><div class="hobby-wrap"><span class="hobby">ESP32</span><span class="hobby">Embedded C</span><span class="hobby">Wi-Fi</span><span class="hobby">OLED Display</span><span class="hobby">Touch Sensors</span><span class="hobby">Motor Driver</span></div></div>
-        </div>
+<!-- MODAL 2: VR Workshop -->
+<div class="modal-overlay" id="m2" onclick="closeModal(event,this)">
+  <div class="modal">
+    <div class="modal-close"><button onclick="closeModalById('m2')">✕</button></div>
+    <div class="modal-body">
+      <div class="modal-date">Aug 2025 – Sep 2025 · Team Project</div>
+      <div class="modal-title">Virtual Horizon — VR Workshop</div>
+      <div class="modal-media-grid">
+        <div class="modal-media-item modal-media-main"><div class="modal-media-placeholder"><div class="mpi">📷</div><p>Main photo/video<br/><code>assets/vr-1.jpg</code></p></div></div>
+        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">📷</div><p><code>assets/vr-2.jpg</code></p></div></div>
+        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">🎥</div><p><code>assets/vr-3.mp4</code></p></div></div>
       </div>
-
+      <div class="modal-sections">
+        <div>
+          <div class="modal-sec"><h4>Overview</h4><p>A team project building a virtual reality application using Unity, designed to introduce VR technology to school students through hands-on demonstrations and presentations focused on education and tourism.</p></div>
+          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul><li>Immersive VR environment built in Unity</li><li>Educational and tourism-themed VR scenes</li><li>Presented hardware setup and real-world applications</li><li>Interactive demo sessions for school students</li></ul></div>
+        </div>
+        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">Unity</span><span class="modal-tag">C#</span><span class="modal-tag">VR SDK</span><span class="modal-tag">3D Modelling</span></div></div>
+      </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <section id="certifications">
-    <div class="sec-head"><h2>Certifications</h2><div class="sec-div"></div></div>
-    <div class="cert-grid">
-      <div class="cert-card"><div class="cert-icon">🔧</div><div><div class="cert-title">FPGA Prototyping Using Verilog HDL</div><div class="cert-org">NIELIT</div></div></div>
-      <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-title">Python for Data Science</div><div class="cert-org">NPTEL</div></div></div>
-      <div class="cert-card"><div class="cert-icon">🎖️</div><div><div class="cert-title">NCC B Certificate</div><div class="cert-org">National Cadet Corps</div></div></div>
-      <div class="cert-card"><div class="cert-icon">🧠</div><div><div class="cert-title">Machine Learning</div><div class="cert-org">NSDC</div></div></div>
+<!-- MODAL 3: TSLV Robot -->
+<div class="modal-overlay" id="m3" onclick="closeModal(event,this)">
+  <div class="modal">
+    <div class="modal-close"><button onclick="closeModalById('m3')">✕</button></div>
+    <div class="modal-body">
+      <div class="modal-date">Jan 2024 – Feb 2024 · Hardware Project</div>
+      <div class="modal-title">TSLV Robot</div>
+      <div class="modal-media-grid">
+        <div class="modal-media-item modal-media-main"><div class="modal-media-placeholder"><div class="mpi">📷</div><p>Main photo/video<br/><code>assets/robot-1.jpg</code></p></div></div>
+        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">📷</div><p><code>assets/robot-2.jpg</code></p></div></div>
+        <div class="modal-media-item"><div class="modal-media-placeholder"><div class="mpi">🎥</div><p><code>assets/robot-3.mp4</code></p></div></div>
+      </div>
+      <div class="modal-sections">
+        <div>
+          <div class="modal-sec"><h4>Overview</h4><p>An ESP32-based robot with Wi-Fi-enabled motion control operated through a mobile phone browser interface. Designed to explore embedded systems, robotics, and human-robot interaction with expressive visual feedback.</p></div>
+          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul><li>Wi-Fi control via mobile browser using ESP32</li><li>Touch sensors for interactive user input</li><li>OLED display showing facial expressions and status</li><li>Custom chassis and motor driver integration</li></ul></div>
+        </div>
+        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">ESP32</span><span class="modal-tag">Embedded C</span><span class="modal-tag">Wi-Fi</span><span class="modal-tag">OLED</span><span class="modal-tag">Touch Sensors</span><span class="modal-tag">Motor Driver</span></div></div>
+      </div>
     </div>
-  </section>
-
-  <section id="contact">
-    <div class="sec-head"><h2>Contact</h2><div class="sec-div"></div><p>Open to collaborations, projects, and opportunities</p></div>
-    <div class="contact-grid">
-      <div class="contact-card"><div class="ci">📧</div><div><div class="cl">Email</div><div class="cv"><a href="mailto:anandhubijua2004@gmail.com">anandhubijua2004@gmail.com</a></div></div></div>
-      <div class="contact-card"><div class="ci">💼</div><div><div class="cl">LinkedIn</div><div class="cv"><a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">linkedin.com/in/anandhu-biju--</a></div></div></div>
-      <div class="contact-card"><div class="ci">🐙</div><div><div class="cl">GitHub</div><div class="cv"><a href="https://github.com/ANANDHU-BIJU/" target="_blank">github.com/ANANDHU-BIJU</a></div></div></div>
-      <div class="contact-card"><div class="ci">📍</div><div><div class="cl">Location</div><div class="cv">Thodupuzha, Kerala, India</div></div></div>
-    </div>
-  </section>
-
+  </div>
 </div>
 
 <script>
-function show(id,el){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');if(el)el.classList.add('active');closeProject();}
-function toggleDark(){document.getElementById('body').classList.toggle('dark');document.getElementById('dtoggle').textContent=document.getElementById('body').classList.contains('dark')?'☀️ Light':'🌙 Dark';}
-function openProject(id){
-  document.getElementById('proj-grid-view').style.display='none';
-  document.getElementById('proj-detail-view').style.display='block';
-  document.querySelectorAll('.proj-detail').forEach(d=>d.style.display='none');
-  document.getElementById(id).style.display='block';
-  document.querySelector('.main').scrollTop=0;
+// NAV
+function show(id,el){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(el&&el.tagName==='A')el.classList.add('active');
 }
-function closeProject(){
-  document.getElementById('proj-grid-view').style.display='block';
-  document.getElementById('proj-detail-view').style.display='none';
-  document.querySelectorAll('.proj-detail').forEach(d=>d.style.display='none');
+
+// TYPED TEXT
+const roles=['Embedded Systems Engineer','Robotics Enthusiast','ECE Student','ML Explorer'];
+let ri=0,ci=0,del=false;
+function typeEffect(){
+  const el=document.getElementById('typed-text');
+  if(!el)return;
+  const cur=roles[ri];
+  if(!del){
+    el.textContent=cur.substring(0,ci+1);ci++;
+    if(ci===cur.length){del=true;setTimeout(typeEffect,1800);return;}
+  }else{
+    el.textContent=cur.substring(0,ci-1);ci--;
+    if(ci===0){del=false;ri=(ri+1)%roles.length;}
+  }
+  setTimeout(typeEffect,del?60:100);
 }
+typeEffect();
+
+// MODAL
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModalById(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+function closeModal(e,overlay){if(e.target===overlay){overlay.classList.remove('open');document.body.style.overflow='';}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>{m.classList.remove('open');document.body.style.overflow='';})}});
 </script>
 </body>
 </html>
