@@ -66,6 +66,16 @@ section.active{display:block;}
 .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
 .stag{background:var(--card);border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:.3rem .8rem;border-radius:6px;transition:border-color .2s;}
 .stag:hover{border-color:var(--accent);}
+.achieve-banner{background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.03));border:1px solid rgba(74,222,128,.2);border-radius:12px;padding:1.4rem 1.6rem;display:flex;align-items:flex-start;gap:1rem;margin-bottom:2.5rem;}
+.achieve-icon{font-size:1.8rem;flex-shrink:0;margin-top:.1rem;}
+.achieve-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
+.achieve-desc{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:border-color .2s;}
+.cert-card:hover{border-color:var(--accent);}
+.cert-icon{width:36px;height:36px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.cert-title{font-size:.87rem;font-weight:600;margin-bottom:.2rem;color:var(--text);}
+.cert-org{font-size:.77rem;color:var(--muted);}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
 .proj-card{background:var(--card);border:2px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;transition:border-color .25s,transform .25s;aspect-ratio:4/3;}
 .proj-card:hover{border-color:var(--accent);transform:translateY(-4px);}
@@ -90,10 +100,12 @@ section.active{display:block;}
 .modal-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem;line-height:1.2;}
 .modal-award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);border-radius:20px;padding:.3rem .9rem;font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:1.5rem;}
 .modal-media-grid{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:200px 200px;gap:.6rem;margin-bottom:2rem;border-radius:10px;overflow:hidden;}
+.modal-media-grid-4{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:200px 200px;gap:.6rem;margin-bottom:2rem;border-radius:10px;overflow:hidden;}
 .modal-media-item{background:var(--bg3);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .modal-media-item img{width:100%;height:100%;object-fit:cover;display:block;}
 .modal-media-item video{width:100%;height:100%;object-fit:cover;display:block;background:#000;}
 .modal-media-main{grid-row:span 2;}
+.modal-media-right{display:grid;grid-template-rows:1fr 1fr;gap:.6rem;}
 .modal-sections{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;}
 .modal-sec h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
 .modal-sec h4::after{content:'';flex:1;height:1px;background:var(--border);}
@@ -103,6 +115,11 @@ section.active{display:block;}
 .modal-sec li::marker{color:var(--accent);}
 .modal-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
 .modal-tag{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.15);color:var(--accent);font-size:.75rem;padding:.25rem .7rem;border-radius:6px;}
+.modal-divider{height:1px;background:var(--border);margin:2rem 0;}
+.pcb-media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-bottom:1.5rem;border-radius:10px;overflow:hidden;}
+.pcb-media-grid .modal-media-item{min-height:160px;}
+.pcb-video-row{border-radius:10px;overflow:hidden;margin-bottom:2rem;}
+.pcb-video-row video{width:100%;max-height:280px;object-fit:cover;display:block;background:#000;}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:700px;}
 .contact-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s;}
 .contact-card:hover{border-color:var(--accent);}
@@ -112,7 +129,7 @@ section.active{display:block;}
 .cc-val a{color:var(--text);text-decoration:none;}
 .cc-val a:hover{color:var(--accent);}
 @media(max-width:1024px){.proj-grid{grid-template-columns:repeat(2,1fr);}.resume-grid{grid-template-columns:1fr;}.about-grid{grid-template-columns:1fr;}}
-@media(max-width:768px){.nav-links{display:none;}.proj-grid{grid-template-columns:1fr 1fr;}.modal-media-grid{grid-template-columns:1fr;grid-template-rows:auto;}.modal-media-main{grid-row:span 1;}.modal-sections{grid-template-columns:1fr;}.about-info{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){.nav-links{display:none;}.proj-grid{grid-template-columns:1fr 1fr;}.modal-media-grid{grid-template-columns:1fr;grid-template-rows:auto;}.modal-media-main{grid-row:span 1;}.modal-sections{grid-template-columns:1fr;}.about-info{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}.pcb-media-grid{grid-template-columns:1fr;}}
 @media(max-width:500px){.proj-grid{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -179,11 +196,11 @@ section.active{display:block;}
       <p class="about-bio">A fourth-year Electronics and Communication Engineering student with a minor in Computer Science, specialising in Embedded Systems, Robotics, and AI.</p>
       <p class="about-bio">Driven by a passion for building systems that bridge the physical and digital worlds — combining hardware expertise with software intelligence to create meaningful, real-world solutions.</p>
       <div class="about-tags">
-        <span class="about-tag"> Robotics & AI</span>
-        <span class="about-tag"> 3D Modelling</span>
-        <span class="about-tag"> PCB Design</span>
-        <span class="about-tag"> Emerging Tech</span>
-        <span class="about-tag"> Workshops</span>
+        <span class="about-tag">Robotics & AI</span>
+        <span class="about-tag">3D Modelling</span>
+        <span class="about-tag">PCB Design</span>
+        <span class="about-tag">Emerging Tech</span>
+        <span class="about-tag">Workshops</span>
       </div>
     </div>
   </div>
@@ -201,14 +218,27 @@ section.active{display:block;}
         <div class="titem"><div class="tdot"></div><div class="ttitle">Higher Secondary (Class XII)</div><div class="tdate-badge">Jun 2021 – Mar 2023</div><div class="tsub">State Board · St. George Higher Secondary School, Thodupuzha</div><div class="tdesc">Percentage: 97.3%</div></div>
         <div class="titem"><div class="tdot"></div><div class="ttitle">Secondary School (Class X)</div><div class="tdate-badge">Jun 2020 – Mar 2021</div><div class="tsub">CBSE · Vimala Public School, Thodupuzha</div><div class="tdesc">Percentage: 95.6%</div></div>
       </div>
-      <h3 style="margin-top:2.5rem;">Certifications</h3>
-      <div class="timeline">
-        <div class="titem"><div class="tdot"></div><div class="ttitle">FPGA Prototyping Using Verilog HDL</div><div class="tsub">NIELIT</div></div>
-        <div class="titem"><div class="tdot"></div><div class="ttitle">Python for Data Science</div><div class="tsub">NPTEL</div></div>
-        <div class="titem"><div class="tdot"></div><div class="ttitle">Machine Learning</div><div class="tsub">NSDC</div></div>
-        <div class="titem"><div class="tdot"></div><div class="ttitle">NCC B Certificate</div><div class="tsub">National Cadet Corps</div></div>
+
+      <h3 style="margin-top:2.5rem;">Achievements</h3>
+      <div class="achieve-banner">
+        <div class="achieve-icon">🏆</div>
+        <div>
+          <div class="achieve-title">First Prize — INNOVIX Mini Project Exhibition</div>
+          <div class="achieve-desc">Secured First Prize at RISE 2026, Federal Institute of Science and Technology (FISAT), for the project Human-Centric Embodied Home Assistant.</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:2rem;">Certifications</h3>
+      <div class="cert-grid">
+        <div class="cert-card"><div class="cert-icon">🔧</div><div><div class="cert-title">FPGA Prototyping Using Verilog HDL</div><div class="cert-org">NIELIT</div></div></div>
+        <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-title">Python for Data Science</div><div class="cert-org">NPTEL</div></div></div>
+        <div class="cert-card"><div class="cert-icon">💻</div><div><div class="cert-title">Microprocessors and Microcontrollers</div><div class="cert-org">NPTEL</div></div></div>
+        <div class="cert-card"><div class="cert-icon">🧠</div><div><div class="cert-title">Machine Learning</div><div class="cert-org">NSDC</div></div></div>
+        <div class="cert-card"><div class="cert-icon">🤖</div><div><div class="cert-title">Deep Learning</div><div class="cert-org">NSDC</div></div></div>
+        <div class="cert-card"><div class="cert-icon">🎖️</div><div><div class="cert-title">NCC B Certificate</div><div class="cert-org">National Cadet Corps</div></div></div>
       </div>
     </div>
+
     <div class="resume-col">
       <h3>Skills</h3>
       <div class="skill-group"><h4>Programming Languages</h4><div class="skill-tags"><span class="stag">C</span><span class="stag">Python</span><span class="stag">Embedded C</span></div></div>
@@ -249,6 +279,14 @@ section.active{display:block;}
         <div class="proj-card-short">ESP32 Wi-Fi robot · OLED expressions · Touch sensors</div>
       </div>
     </div>
+    <div class="proj-card" onclick="openModal('m4')">
+      <div class="proj-card-img"><img src="assets/pcb-cover.jpg" alt="Custom PCB"/></div>
+      <div class="proj-always-name">Custom PCB Design</div>
+      <div class="proj-card-overlay">
+        <div class="proj-card-name">Custom PCB — Home Assistant System</div>
+        <div class="proj-card-short">KiCad · PCBWay · Raspberry Pi + ESP32 integration</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -257,10 +295,10 @@ section.active{display:block;}
   <div class="sec-eyebrow">Contact</div>
   <h2 class="sec-title">Get In Touch</h2>
   <div class="contact-grid">
-    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">Email</div><div class="cc-val"><a href="mailto:anandhubijua2004@gmail.com">anandhubijua2004@gmail.com</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">LinkedIn</div><div class="cc-val"><a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">linkedin.com/in/anandhu-biju--</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">GitHub</div><div class="cc-val"><a href="https://github.com/ANANDHU-BIJU/" target="_blank">github.com/ANANDHU-BIJU</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">Location</div><div class="cc-val">Thodupuzha, Kerala, India</div></div></div>
+    <div class="contact-card"><div class="cc-icon">📧</div><div><div class="cc-label">Email</div><div class="cc-val"><a href="mailto:anandhubijua2004@gmail.com">anandhubijua2004@gmail.com</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon">💼</div><div><div class="cc-label">LinkedIn</div><div class="cc-val"><a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">linkedin.com/in/anandhu-biju--</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon">🐙</div><div><div class="cc-label">GitHub</div><div class="cc-val"><a href="https://github.com/ANANDHU-BIJU/" target="_blank">github.com/ANANDHU-BIJU</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon">📍</div><div><div class="cc-label">Location</div><div class="cc-val">Thodupuzha, Kerala, India</div></div></div>
   </div>
 </section>
 
@@ -350,6 +388,41 @@ section.active{display:block;}
           </ul></div>
         </div>
         <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">ESP32</span><span class="modal-tag">Embedded C</span><span class="modal-tag">Wi-Fi</span><span class="modal-tag">OLED</span><span class="modal-tag">Touch Sensors</span><span class="modal-tag">Motor Driver</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 4: Custom PCB -->
+<div class="modal-overlay" id="m4" onclick="closeModal(event,this)">
+  <div class="modal">
+    <div class="modal-close"><button onclick="closeModalById('m4')">✕</button></div>
+    <div class="modal-body">
+      <div class="modal-date">2026 · Hardware Design</div>
+      <div class="modal-title">Custom PCB — Home Assistant System</div>
+      <div class="pcb-media-grid">
+        <div class="modal-media-item"><img src="assets/pcb-1.jpg" alt="PCB Design 1"/></div>
+        <div class="modal-media-item"><img src="assets/pcb-2.jpg" alt="PCB Design 2"/></div>
+        <div class="modal-media-item"><img src="assets/pcb-3.jpg" alt="PCB Design 3"/></div>
+        <div class="modal-media-item"><img src="assets/pcb-4.jpg" alt="PCB Design 4"/></div>
+      </div>
+      <div class="pcb-video-row">
+        <video src="assets/pcb-1.mp4" controls></video>
+      </div>
+      <div class="modal-sections">
+        <div>
+          <div class="modal-sec"><h4>Overview</h4><p>A custom PCB designed using KiCad to integrate the core hardware components of the Home Assistant system into a single compact unit. The board consolidates connections for the Raspberry Pi, ESP32 DevKit, servo motors, radar sensor (LD2410), motor driver (TB6612FNG), TFT display, and power supply components — simplifying wiring and significantly improving system reliability. Manufactured and ordered through PCBWay.</p></div>
+          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
+            <li>Integrates Raspberry Pi, ESP32, servo motors, radar sensor, and motor driver on a single board</li>
+            <li>TB6612FNG motor driver for precise and efficient motor control</li>
+            <li>LD2410 radar sensor integration for human presence detection</li>
+            <li>Power regulation and distribution for both high-power (motors) and low-power (logic) components</li>
+            <li>Organized, stable connections replacing complex wiring harnesses</li>
+            <li>Compact form factor improving system enclosure and portability</li>
+            <li>Manufactured and delivered via PCBWay</li>
+          </ul></div>
+        </div>
+        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">KiCad</span><span class="modal-tag">PCBWay</span><span class="modal-tag">ESP32</span><span class="modal-tag">Raspberry Pi</span><span class="modal-tag">TB6612FNG</span><span class="modal-tag">LD2410</span><span class="modal-tag">TFT Display</span><span class="modal-tag">Power Regulation</span></div></div>
       </div>
     </div>
   </div>
