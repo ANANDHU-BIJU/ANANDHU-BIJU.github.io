@@ -71,9 +71,6 @@ section.active{display:block;}
 .proj-card:hover{border-color:var(--accent);transform:translateY(-4px);}
 .proj-card-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3);}
 .proj-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.proj-card-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;color:var(--light);text-align:center;padding:1.5rem;}
-.proj-card-placeholder .pci{font-size:2.8rem;margin-bottom:.8rem;}
-.proj-card-placeholder p{font-size:.75rem;line-height:1.5;}
 .proj-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 60%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem 1.3rem;opacity:0;transition:opacity .25s;}
 .proj-card:hover .proj-card-overlay{opacity:1;}
 .proj-card-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
@@ -97,10 +94,6 @@ section.active{display:block;}
 .modal-media-item img{width:100%;height:100%;object-fit:cover;display:block;}
 .modal-media-item video{width:100%;height:100%;object-fit:cover;display:block;background:#000;}
 .modal-media-main{grid-row:span 2;}
-.modal-media-placeholder{text-align:center;color:var(--light);padding:1rem;}
-.modal-media-placeholder .mpi{font-size:1.8rem;margin-bottom:.4rem;}
-.modal-media-placeholder p{font-size:.68rem;line-height:1.4;}
-.modal-media-placeholder code{font-size:.65rem;background:var(--border);padding:.1rem .3rem;border-radius:3px;font-family:monospace;margin-top:.2rem;display:inline-block;}
 .modal-sections{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;}
 .modal-sec h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
 .modal-sec h4::after{content:'';flex:1;height:1px;background:var(--border);}
@@ -142,7 +135,7 @@ section.active{display:block;}
   <div class="home-content">
     <div class="home-eyebrow">Electronics & Communication Engineer</div>
     <h1 class="home-title">Anandhu Biju</h1>
-    <p class="home-subtitle">A <span id="typed-text">Embedded Systems Engineer</span> from Kerala, India</p>
+    <p class="home-subtitle"><span id="typed-text">Embedded Systems Engineer</span></p>
     <div class="home-inline-nav">
       <a class="hin active" onclick="show('home',this)">Home</a>
       <a class="hin" onclick="show('about',this)">About</a>
@@ -183,14 +176,14 @@ section.active{display:block;}
         <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Languages:</span><span class="ai-val">English, Malayalam</span></div>
         <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Year:</span><span class="ai-val">4th Year (2023–Present)</span></div>
       </div>
-      <p class="about-bio">Motivated fourth-year ECE student with a minor in Computer Science. Strong interests in Embedded Systems, Robotics, and Machine Learning. Hands-on experience with Arduino, Raspberry Pi, ESP32, sensors, actuators, and robotics.</p>
-      <p class="about-bio">Particularly focused on integrating AI with embedded systems and developing intelligent solutions on resource-constrained hardware. Strong problem-solving skills and a multidisciplinary background spanning both hardware and software.</p>
+      <p class="about-bio">A fourth-year Electronics and Communication Engineering student with a minor in Computer Science, specialising in Embedded Systems, Robotics, and AI.</p>
+      <p class="about-bio">Driven by a passion for building systems that bridge the physical and digital worlds — combining hardware expertise with software intelligence to create meaningful, real-world solutions.</p>
       <div class="about-tags">
-        <span class="about-tag">🤖 Robotics & AI</span>
-        <span class="about-tag">🖨️ 3D Modelling</span>
-        <span class="about-tag">🔌 PCB Design</span>
-        <span class="about-tag">🔬 Emerging Tech</span>
-        <span class="about-tag">🛠️ Workshops</span>
+        <span class="about-tag"> Robotics & AI</span>
+        <span class="about-tag"> 3D Modelling</span>
+        <span class="about-tag"> PCB Design</span>
+        <span class="about-tag"> Emerging Tech</span>
+        <span class="about-tag"> Workshops</span>
       </div>
     </div>
   </div>
@@ -231,11 +224,8 @@ section.active{display:block;}
   <div class="sec-eyebrow">Projects</div>
   <h2 class="sec-title">My Works</h2>
   <div class="proj-grid">
-
     <div class="proj-card" onclick="openModal('m1')">
-      <div class="proj-card-img">
-        <img src="assets/ha-cover.jpg" alt="Home Assistant"/>
-      </div>
+      <div class="proj-card-img"><img src="assets/ha-cover.jpg" alt="Home Assistant"/></div>
       <div class="proj-always-name">Home Assistant</div>
       <div class="proj-card-overlay">
         <div class="proj-card-name">Human-Centric Embodied Home Assistant</div>
@@ -243,29 +233,22 @@ section.active{display:block;}
       </div>
       <div class="proj-card-badge">🏆 First Prize</div>
     </div>
-
     <div class="proj-card" onclick="openModal('m2')">
-      <div class="proj-card-img">
-        <img src="assets/vr-cover.jpg" alt="VR Workshop"/>
-      </div>
+      <div class="proj-card-img"><img src="assets/vr-cover.jpg" alt="VR Workshop"/></div>
       <div class="proj-always-name">Virtual Horizon — VR Workshop</div>
       <div class="proj-card-overlay">
         <div class="proj-card-name">Virtual Horizon — VR Workshop</div>
-        <div class="proj-card-short">Unity VR app · Education & tourism · Team project</div>
+        <div class="proj-card-short">Unity VR app · Education & tourism · Vidyodaya School, Kochi</div>
       </div>
     </div>
-
     <div class="proj-card" onclick="openModal('m3')">
-      <div class="proj-card-img">
-        <img src="assets/robot-cover.jpg" alt="TSLV Robot"/>
-      </div>
+      <div class="proj-card-img"><img src="assets/robot-cover.jpg" alt="TSLV Robot"/></div>
       <div class="proj-always-name">TSLV Robot</div>
       <div class="proj-card-overlay">
         <div class="proj-card-name">TSLV Robot</div>
         <div class="proj-card-short">ESP32 Wi-Fi robot · OLED expressions · Touch sensors</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -274,10 +257,10 @@ section.active{display:block;}
   <div class="sec-eyebrow">Contact</div>
   <h2 class="sec-title">Get In Touch</h2>
   <div class="contact-grid">
-    <div class="contact-card"><div class="cc-icon">📧</div><div><div class="cc-label">Email</div><div class="cc-val"><a href="mailto:anandhubijua2004@gmail.com">anandhubijua2004@gmail.com</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon">💼</div><div><div class="cc-label">LinkedIn</div><div class="cc-val"><a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">linkedin.com/in/anandhu-biju--</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon">🐙</div><div><div class="cc-label">GitHub</div><div class="cc-val"><a href="https://github.com/ANANDHU-BIJU/" target="_blank">github.com/ANANDHU-BIJU</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon">📍</div><div><div class="cc-label">Location</div><div class="cc-val">Thodupuzha, Kerala, India</div></div></div>
+    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">Email</div><div class="cc-val"><a href="mailto:anandhubijua2004@gmail.com">anandhubijua2004@gmail.com</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">LinkedIn</div><div class="cc-val"><a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">linkedin.com/in/anandhu-biju--</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">GitHub</div><div class="cc-val"><a href="https://github.com/ANANDHU-BIJU/" target="_blank">github.com/ANANDHU-BIJU</a></div></div></div>
+    <div class="contact-card"><div class="cc-icon"></div><div><div class="cc-label">Location</div><div class="cc-val">Thodupuzha, Kerala, India</div></div></div>
   </div>
 </section>
 
@@ -290,22 +273,27 @@ section.active{display:block;}
       <div class="modal-title">Human-Centric Embodied Home Assistant</div>
       <div class="modal-award">🏆 First Prize — INNOVIX / RISE 2026 at FISAT</div>
       <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main">
-          <video src="assets/ha-1.mp4" controls></video>
-        </div>
-        <div class="modal-media-item">
-          <video src="assets/ha-2.mp4" controls></video>
-        </div>
-        <div class="modal-media-item">
-          <video src="assets/ha-3.mp4" controls></video>
-        </div>
+        <div class="modal-media-item modal-media-main"><video src="assets/ha-1.mp4" controls></video></div>
+        <div class="modal-media-item"><video src="assets/ha-2.mp4" controls></video></div>
+        <div class="modal-media-item"><video src="assets/ha-3.mp4" controls></video></div>
       </div>
       <div class="modal-sections">
         <div>
-          <div class="modal-sec"><h4>Overview</h4><p>A human-aware home assistant integrating computer vision, voice interaction, and embedded control. Designed to run on resource-constrained hardware for real-world smart home and assistive applications.</p></div>
-          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul><li>Human detection and tracking using computer vision on Raspberry Pi Camera</li><li>Voice interaction module for natural language commands</li><li>ESP32 handles peripheral control — lights, motors, actuators</li><li>OLED display for system feedback and status</li><li>Resource-efficient pipeline optimised for edge deployment</li></ul></div>
+          <div class="modal-sec"><h4>Overview</h4><p>A Human-Centric Embodied Home Assistant designed to enhance human–machine interaction in smart home environments. Unlike conventional assistants that rely solely on voice, this system integrates computer vision, speech interaction, and embedded control — enabling face recognition, presence detection, and expressive physical interaction through a Raspberry Pi 2 Model B and ESP32 controller.</p></div>
+          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
+            <li>Face recognition for identity-based secure interaction</li>
+            <li>Voice interaction via USB microphone with speech-to-text and text-to-speech</li>
+            <li>Wake word navigation — layout-driven movement to predefined rooms when no face is detected</li>
+            <li>3-DOF servo head movement for expressive, user-oriented physical interaction</li>
+            <li>Radar-based human presence detection for improved responsiveness</li>
+            <li>TFT display for visual feedback and expressions</li>
+            <li>Wireless home automation via ESP8266 — WiFi relay control for appliances</li>
+            <li>Web-based remote inspection — motor control and image capture via browser</li>
+            <li>Custom PCB design for improved reliability and compactness</li>
+            <li>Battery-powered with regulated supply rails for portable operation</li>
+          </ul></div>
         </div>
-        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">Raspberry Pi</span><span class="modal-tag">ESP32</span><span class="modal-tag">Python</span><span class="modal-tag">OpenCV</span><span class="modal-tag">Embedded C</span><span class="modal-tag">Sensors</span><span class="modal-tag">Actuators</span></div></div>
+        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">Raspberry Pi</span><span class="modal-tag">ESP32</span><span class="modal-tag">Python</span><span class="modal-tag">OpenCV</span><span class="modal-tag">Embedded C</span><span class="modal-tag">ESP8266</span><span class="modal-tag">Custom PCB</span><span class="modal-tag">TFT Display</span><span class="modal-tag">Servo Motors</span><span class="modal-tag">Radar Sensor</span></div></div>
       </div>
     </div>
   </div>
@@ -319,17 +307,20 @@ section.active{display:block;}
       <div class="modal-date">Aug 2025 – Sep 2025 · Team Project</div>
       <div class="modal-title">Virtual Horizon — VR Workshop</div>
       <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main">
-          <video src="assets/vr-1.mp4" controls></video>
-        </div>
-        <div class="modal-media-item">
-          <video src="assets/vr-2.mp4" controls></video>
-        </div>
+        <div class="modal-media-item modal-media-main"><video src="assets/vr-1.mp4" controls></video></div>
+        <div class="modal-media-item"><video src="assets/vr-2.mp4" controls></video></div>
       </div>
       <div class="modal-sections">
         <div>
-          <div class="modal-sec"><h4>Overview</h4><p>A team project building a virtual reality application using Unity, designed to introduce VR technology to school students through hands-on demonstrations and presentations focused on education and tourism.</p></div>
-          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul><li>Immersive VR environment built in Unity</li><li>Educational and tourism-themed VR scenes</li><li>Presented hardware setup and real-world applications</li><li>Interactive demo sessions for school students</li></ul></div>
+          <div class="modal-sec"><h4>Overview</h4><p>A hands-on VR workshop conducted at Vidyodaya School, Kochi, as part of a teachers and students meet. The session was designed to introduce the future of virtual reality technology through live demonstrations — giving students and educators a first-hand experience of how VR is transforming education, exploration, and entertainment.</p></div>
+          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
+            <li>Developed an original VR game from scratch using Unity engine</li>
+            <li>Virtual campus tour — teachers explored FISAT campus in immersive 360° from their own school</li>
+            <li>Interactive chemistry lab simulations — conducted virtual practical experiments safely in VR</li>
+            <li>Showcased real-world VR applications in education, tourism, and gaming</li>
+            <li>Live demo sessions engaging both students and teachers at Vidyodaya School, Kochi</li>
+            <li>Presented the future roadmap of VR technology and its impact on modern learning</li>
+          </ul></div>
         </div>
         <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">Unity</span><span class="modal-tag">C#</span><span class="modal-tag">VR SDK</span><span class="modal-tag">3D Modelling</span></div></div>
       </div>
@@ -345,17 +336,18 @@ section.active{display:block;}
       <div class="modal-date">Jan 2024 – Feb 2024 · Hardware Project</div>
       <div class="modal-title">TSLV Robot</div>
       <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main">
-          <video src="assets/robot-1.mp4" controls></video>
-        </div>
-        <div class="modal-media-item">
-          <video src="assets/robot-2.mp4" controls></video>
-        </div>
+        <div class="modal-media-item modal-media-main"><video src="assets/robot-1.mp4" controls></video></div>
+        <div class="modal-media-item"><video src="assets/robot-2.mp4" controls></video></div>
       </div>
       <div class="modal-sections">
         <div>
           <div class="modal-sec"><h4>Overview</h4><p>An ESP32-based robot with Wi-Fi-enabled motion control operated through a mobile phone browser interface. Designed to explore embedded systems, robotics, and human-robot interaction with expressive visual feedback.</p></div>
-          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul><li>Wi-Fi control via mobile browser using ESP32</li><li>Touch sensors for interactive user input</li><li>OLED display showing facial expressions and status</li><li>Custom chassis and motor driver integration</li></ul></div>
+          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
+            <li>Wi-Fi control via mobile browser using ESP32</li>
+            <li>Touch sensors for interactive user input</li>
+            <li>OLED display showing facial expressions and status</li>
+            <li>Custom chassis and motor driver integration</li>
+          </ul></div>
         </div>
         <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">ESP32</span><span class="modal-tag">Embedded C</span><span class="modal-tag">Wi-Fi</span><span class="modal-tag">OLED</span><span class="modal-tag">Touch Sensors</span><span class="modal-tag">Motor Driver</span></div></div>
       </div>
