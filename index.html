@@ -221,7 +221,7 @@ section.active{display:block;}
       <div class="skill-group"><h4>Programming Languages</h4><div class="skill-tags"><span class="stag">C</span><span class="stag">Python</span><span class="stag">Embedded C</span></div></div>
       <div class="skill-group"><h4>Embedded & Robotics</h4><div class="skill-tags"><span class="stag">Arduino</span><span class="stag">Raspberry Pi</span><span class="stag">ESP32</span><span class="stag">Sensors</span><span class="stag">Actuators</span></div></div>
       <div class="skill-group"><h4>Tools & Software</h4><div class="skill-tags"><span class="stag">Linux</span><span class="stag">VS Code</span><span class="stag">KiCad</span><span class="stag">Autodesk Fusion</span><span class="stag">Unity</span></div></div>
-      <div class="skill-group"><h4>Focus Areas</h4><div class="skill-tags"><span class="stag">Machine Learning</span><span class="stag">Computer Vision</span><span class="stag">AI on Edge</span><span class="stag">FPGA / Verilog</span></div></div>
+      <div class="skill-group"><h4>Focus Areas</h4><div class="skill-tags"><span class="stag">Robotics</span><span class="stag">Embedded System Development</span><span class="stag">AI</span><span class="stag">FPGA / Verilog</span><span class="stag">PCB Designing</span></div></div>
     </div>
   </div>
 </section>
@@ -320,13 +320,10 @@ section.active{display:block;}
       <div class="modal-title">Virtual Horizon — VR Workshop</div>
       <div class="modal-media-grid">
         <div class="modal-media-item modal-media-main">
-          <img src="assets/vr-1.jpg" alt="VR Workshop 1"/>
+          <video src="assets/vr-1.mp4" controls></video>
         </div>
         <div class="modal-media-item">
-          <img src="assets/vr-2.jpg" alt="VR Workshop 2"/>
-        </div>
-        <div class="modal-media-item">
-          <img src="assets/vr-3.jpg" alt="VR Workshop 3"/>
+          <video src="assets/vr-2.mp4" controls></video>
         </div>
       </div>
       <div class="modal-sections">
@@ -349,13 +346,10 @@ section.active{display:block;}
       <div class="modal-title">TSLV Robot</div>
       <div class="modal-media-grid">
         <div class="modal-media-item modal-media-main">
-          <img src="assets/robot-1.jpg" alt="TSLV Robot 1"/>
+          <video src="assets/robot-1.mp4" controls></video>
         </div>
         <div class="modal-media-item">
-          <img src="assets/robot-2.jpg" alt="TSLV Robot 2"/>
-        </div>
-        <div class="modal-media-item">
-          <img src="assets/robot-3.jpg" alt="TSLV Robot 3"/>
+          <video src="assets/robot-2.mp4" controls></video>
         </div>
       </div>
       <div class="modal-sections">
@@ -383,7 +377,7 @@ function show(id,el){
     if(idx2>-1)document.querySelectorAll('.hin')[idx2].classList.add('active');
   }
 }
-const roles=['Embedded Systems Engineer','Robotics Enthusiast','ECE Student','ML Explorer'];
+const roles=['Embedded Systems Engineer','Robotics Enthusiast','ECE Student','Electronics Engineer'];
 let ri=0,ci=0,del=false;
 function typeEffect(){
   const el=document.getElementById('typed-text');if(!el)return;
