@@ -10,6 +10,8 @@
 :root{--bg:#0d0d0d;--bg2:#111111;--bg3:#161616;--card:#1a1a1a;--border:#2a2a2a;--text:#f0f0f0;--muted:#888888;--light:#555555;--accent:#4ade80;--accent2:#22c55e;}
 html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+.hero-fixed-bg{position:fixed;inset:0;z-index:0;background:url('hero-bg.jpg') center/cover no-repeat;}
+.hero-fixed-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6);}
 body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;z-index:0;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);cursor:pointer;}
@@ -17,12 +19,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s;letter-spacing:.02em;}
 .nav-links a:hover,.nav-links a.active{color:var(--text);}
 .nav-links a.active{border-bottom:2px solid var(--accent);padding-bottom:.1rem;}
-section{display:none;min-height:100vh;padding:8rem 8% 5rem;position:relative;z-index:1;}
+section{display:none;min-height:100vh;padding:8rem 8% 5rem;position:relative;z-index:1;background:rgba(10,10,10,0.6);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
 section.active{display:block;}
-#home{display:none;padding:0;}
-#home.active{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding:0;}
-.home-bg{position:absolute;inset:0;z-index:0;background:url('hero-bg.jpg') center/cover no-repeat;}
-.home-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55);}
+#home{display:none;padding:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;}
+#home.active{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;}
+
+
 .home-content{position:relative;z-index:1;padding:0 8%;display:flex;flex-direction:column;justify-content:center;min-height:100vh;}
 .home-eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:1.2rem;}
 .home-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.05;margin-bottom:1rem;letter-spacing:-.03em;}
@@ -134,6 +136,7 @@ section.active{display:block;}
 </style>
 </head>
 <body>
+<div class="hero-fixed-bg"></div>
 
 <nav>
   <div class="nav-logo" onclick="show('home',this)">Anandhu Biju</div>
@@ -148,7 +151,7 @@ section.active{display:block;}
 
 <!-- HOME -->
 <section id="home" class="active">
-  <div class="home-bg"></div>
+  
   <div class="home-content">
     <div class="home-eyebrow">Electronics & Communication Engineer</div>
     <h1 class="home-title">Anandhu Biju</h1>
