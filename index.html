@@ -1,464 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Anandhu Biju | ECE Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{--bg:#0d0d0d;--bg2:#111111;--bg3:#161616;--card:#1a1a1a;--border:#2a2a2a;--text:#f0f0f0;--muted:#888888;--light:#555555;--accent:#4ade80;--accent2:#22c55e;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-.hero-fixed-bg{position:fixed;inset:0;z-index:0;background:url('hero-bg.jpg') center/cover no-repeat;}
-.hero-fixed-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6);}
-body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;z-index:0;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);cursor:pointer;}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s;letter-spacing:.02em;}
-.nav-links a:hover,.nav-links a.active{color:var(--text);}
-.nav-links a.active{border-bottom:2px solid var(--accent);padding-bottom:.1rem;}
-section{display:none;min-height:100vh;padding:8rem 8% 5rem;position:relative;z-index:1;background:rgba(10,10,10,0.6);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
-section.active{display:block;}
-#home{display:none;padding:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;}
-#home.active{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;}
-
-
-.home-content{position:relative;z-index:1;padding:0 8%;display:flex;flex-direction:column;justify-content:center;min-height:100vh;}
-.home-eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:1.2rem;}
-.home-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.05;margin-bottom:1rem;letter-spacing:-.03em;}
-.home-subtitle{font-size:clamp(1rem,2.5vw,1.4rem);color:var(--muted);margin-bottom:2.5rem;font-weight:300;max-width:600px;line-height:1.5;}
-.home-subtitle span{color:var(--accent);font-weight:500;}
-.home-inline-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;}
-.hin{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;cursor:pointer;padding:.4rem .9rem;border-radius:6px;border:1px solid transparent;transition:all .2s;letter-spacing:.02em;}
-.hin:hover{color:#fff;border-color:rgba(255,255,255,.2);}
-.hin.active{color:#fff;border:1px solid var(--accent);background:rgba(74,222,128,.08);}
-.home-socials{display:flex;gap:1rem;margin-bottom:3rem;}
-.social-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.9rem;transition:all .2s;cursor:pointer;}
-.social-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(74,222,128,.08);}
-.sec-eyebrow{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:.8rem;}
-.sec-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent);opacity:.4;}
-.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;margin-bottom:3rem;}
-.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;}
-.about-photo{aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--light);text-align:center;padding:0;}
-.about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.about-role{font-size:1.4rem;font-weight:700;color:var(--accent);font-family:'Space Grotesk',sans-serif;margin-bottom:.3rem;}
-.about-org{font-size:.9rem;color:var(--muted);margin-bottom:1.8rem;font-style:italic;}
-.about-info{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 2rem;margin-bottom:1.8rem;}
-.ai-row{display:flex;align-items:center;gap:.5rem;font-size:.88rem;}
-.ai-arrow{color:var(--accent);font-size:.8rem;flex-shrink:0;}
-.ai-label{color:var(--muted);font-weight:600;min-width:80px;}
-.ai-val{color:var(--text);}
-.about-bio{font-size:.92rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;}
-.about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
-.about-tag{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:var(--accent);font-size:.75rem;padding:.3rem .8rem;border-radius:20px;font-weight:500;}
-.resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
-.resume-col h3{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:2rem;color:var(--text);}
-.timeline{position:relative;}
-.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border);}
-.titem{position:relative;padding-left:1.8rem;margin-bottom:2.2rem;}
-.tdot{position:absolute;left:-.4rem;top:.3rem;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(74,222,128,.4);}
-.tdate-badge{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:4px;font-size:.72rem;font-weight:600;padding:.2rem .7rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.04em;}
-.ttitle{font-size:.95rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.2rem;}
-.tsub{font-size:.85rem;color:var(--muted);font-style:italic;margin-bottom:.4rem;}
-.tdesc{font-size:.83rem;color:var(--light);line-height:1.6;}
-.skill-group{margin-bottom:1.8rem;}
-.skill-group h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin-bottom:.8rem;}
-.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-.stag{background:var(--card);border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:.3rem .8rem;border-radius:6px;transition:border-color .2s;}
-.stag:hover{border-color:var(--accent);}
-.achieve-banner{background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.03));border:1px solid rgba(74,222,128,.2);border-radius:12px;padding:1.4rem 1.6rem;display:flex;align-items:flex-start;gap:1rem;margin-bottom:2.5rem;}
-.achieve-icon{font-size:1.8rem;flex-shrink:0;margin-top:.1rem;}
-.achieve-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
-.achieve-desc{font-size:.83rem;color:var(--muted);line-height:1.6;}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
-.cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:border-color .2s;}
-.cert-card:hover{border-color:var(--accent);}
-.cert-icon{width:36px;height:36px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
-.cert-title{font-size:.87rem;font-weight:600;margin-bottom:.2rem;color:var(--text);}
-.cert-org{font-size:.77rem;color:var(--muted);}
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.proj-card{background:var(--card);border:2px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;transition:border-color .25s,transform .25s;aspect-ratio:4/3;}
-.proj-card:hover{border-color:var(--accent);transform:translateY(-4px);}
-.proj-card-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3);}
-.proj-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.proj-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 60%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem 1.3rem;opacity:0;transition:opacity .25s;}
-.proj-card:hover .proj-card-overlay{opacity:1;}
-.proj-card-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
-.proj-card-short{font-size:.75rem;color:rgba(255,255,255,.65);line-height:1.4;}
-.proj-card-badge{position:absolute;top:.8rem;right:.8rem;background:var(--accent);color:#0d0d0d;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;opacity:0;transition:opacity .25s;}
-.proj-card:hover .proj-card-badge{opacity:1;}
-.proj-always-name{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);padding:.8rem 1rem .7rem;font-size:.85rem;font-weight:600;color:#fff;}
-.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;}
-.modal-overlay.open{opacity:1;pointer-events:all;}
-.modal{background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:900px;max-height:85vh;overflow-y:auto;transform:translateY(20px);transition:transform .3s;}
-.modal-overlay.open .modal{transform:translateY(0);}
-.modal-close{position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;padding:1rem 1.2rem .5rem;background:var(--bg2);}
-.modal-close button{background:var(--card);border:1px solid var(--border);color:var(--muted);width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
-.modal-close button:hover{border-color:var(--accent);color:var(--accent);}
-.modal-body{padding:0 2rem 2.5rem;}
-.modal-date{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem;}
-.modal-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem;line-height:1.2;}
-.modal-award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);border-radius:20px;padding:.3rem .9rem;font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:1.5rem;}
-.modal-media-grid{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:200px 200px;gap:.6rem;margin-bottom:2rem;border-radius:10px;overflow:hidden;}
-.modal-media-grid-4{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:200px 200px;gap:.6rem;margin-bottom:2rem;border-radius:10px;overflow:hidden;}
-.modal-media-item{background:var(--bg3);overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.modal-media-item img{width:100%;height:100%;object-fit:cover;display:block;}
-.modal-media-item video{width:100%;height:100%;object-fit:cover;display:block;background:#000;}
-.modal-media-main{grid-row:span 2;}
-.modal-media-right{display:grid;grid-template-rows:1fr 1fr;gap:.6rem;}
-.modal-sections{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;}
-.modal-sec h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
-.modal-sec h4::after{content:'';flex:1;height:1px;background:var(--border);}
-.modal-sec p{font-size:.88rem;color:var(--muted);line-height:1.75;}
-.modal-sec ul{padding-left:1rem;}
-.modal-sec li{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:.35rem;}
-.modal-sec li::marker{color:var(--accent);}
-.modal-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
-.modal-tag{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.15);color:var(--accent);font-size:.75rem;padding:.25rem .7rem;border-radius:6px;}
-.modal-divider{height:1px;background:var(--border);margin:2rem 0;}
-.pcb-media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-bottom:1.5rem;border-radius:10px;overflow:hidden;}
-.pcb-media-grid .modal-media-item{min-height:160px;}
-.pcb-video-row{border-radius:10px;overflow:hidden;margin-bottom:2rem;}
-.pcb-video-row video{width:100%;max-height:280px;object-fit:cover;display:block;background:#000;}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:700px;}
-.contact-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s;}
-.contact-card:hover{border-color:var(--accent);}
-.cc-icon{width:42px;height:42px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-.cc-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem;}
-.cc-val{font-size:.9rem;font-weight:500;}
-.cc-val a{color:var(--text);text-decoration:none;}
-.cc-val a:hover{color:var(--accent);}
-@media(max-width:1024px){.proj-grid{grid-template-columns:repeat(2,1fr);}.resume-grid{grid-template-columns:1fr;}.about-grid{grid-template-columns:1fr;}}
-@media(max-width:768px){.nav-links{display:none;}.proj-grid{grid-template-columns:1fr 1fr;}.modal-media-grid{grid-template-columns:1fr;grid-template-rows:auto;}.modal-media-main{grid-row:span 1;}.modal-sections{grid-template-columns:1fr;}.about-info{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}.pcb-media-grid{grid-template-columns:1fr;}}
-@media(max-width:500px){.proj-grid{grid-template-columns:1fr;}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anandhu Biju | ECE & CS Minor Portfolio</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Portfolio of Anandhu Biju, a fourth-year Electronics and Communication Engineering student with a minor in Computer Science, specializing in Embedded Systems, Robotics, and AI.">
+    <meta name="keywords" content="Anandhu Biju, Portfolio, ECE, Computer Science, Embedded Systems, Robotics, AI, ESP32, PCB Design, Raspberry Pi">
+    <meta name="author" content="Anandhu Biju">
+    
+    <!-- Link to Devicons stylesheet for official programming/tool icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Link to custom stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
-<div class="hero-fixed-bg"></div>
+<body class="theme-light">
 
-<nav>
-  <div class="nav-logo" onclick="show('home',this)">Anandhu Biju</div>
-  <ul class="nav-links">
-    <li><a class="active" onclick="show('home',this)">Home</a></li>
-    <li><a onclick="show('about',this)">About</a></li>
-    <li><a onclick="show('resume',this)">Resume</a></li>
-    <li><a onclick="show('projects',this)">Projects</a></li>
-    <li><a onclick="show('contact',this)">Contact</a></li>
-  </ul>
-</nav>
+    <!-- INTERACTIVE CUSTOM CURSOR -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
 
-<!-- HOME -->
-<section id="home" class="active">
-  
-  <div class="home-content">
-    <div class="home-eyebrow">Electronics & Communication Engineer</div>
-    <h1 class="home-title">Anandhu Biju</h1>
-    <p class="home-subtitle"><span id="typed-text">Embedded Systems Engineer</span></p>
-    <div class="home-inline-nav">
-      <a class="hin active" onclick="show('home',this)">Home</a>
-      <a class="hin" onclick="show('about',this)">About</a>
-      <a class="hin" onclick="show('resume',this)">Resume</a>
-      <a class="hin" onclick="show('projects',this)">Projects</a>
-      <a class="hin" onclick="show('contact',this)">Contact</a>
-    </div>
-    <div class="home-socials">
-      <a class="social-btn" href="https://github.com/ANANDHU-BIJU/" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      </a>
-      <a class="social-btn" href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
-      <a class="social-btn" href="mailto:anandhubijua2004@gmail.com">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="sec-eyebrow">About</div>
-  <h2 class="sec-title">Learn More About Me</h2>
-  <div class="about-grid">
-    <div class="about-photo">
-      <img src="photo.jpg" alt="Anandhu Biju"/>
-    </div>
-    <div>
-      <div class="about-role">Electronics & Communication Engineer</div>
-      <div class="about-org">FISAT, Angamaly · APJ Abdul Kalam Technological University</div>
-      <div class="about-info">
-        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Degree:</span><span class="ai-val">B.Tech ECE (Minor: CS)</span></div>
-        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">CGPA:</span><span class="ai-val">8.84</span></div>
-        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">City:</span><span class="ai-val">Thodupuzha, Kerala</span></div>
-        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Email:</span><span class="ai-val">anandhubijua2004@gmail.com</span></div>
-        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Languages:</span><span class="ai-val">English, Malayalam</span></div>
-        <div class="ai-row"><span class="ai-arrow">›</span><span class="ai-label">Year:</span><span class="ai-val">4th Year (2023–Present)</span></div>
-      </div>
-      <p class="about-bio">A fourth-year Electronics and Communication Engineering student with a minor in Computer Science, specialising in Embedded Systems, Robotics, and AI.</p>
-      <p class="about-bio">Driven by a passion for building systems that bridge the physical and digital worlds — combining hardware expertise with software intelligence to create meaningful, real-world solutions.</p>
-      <div class="about-tags">
-        <span class="about-tag">Robotics & AI</span>
-        <span class="about-tag">3D Modelling</span>
-        <span class="about-tag">PCB Design</span>
-        <span class="about-tag">Emerging Tech</span>
-        <span class="about-tag">Workshops</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESUME -->
-<section id="resume">
-  <div class="sec-eyebrow">Resume</div>
-  <h2 class="sec-title">Education & Skills</h2>
-  <div class="resume-grid">
-    <div class="resume-col">
-      <h3>Education</h3>
-      <div class="timeline">
-        <div class="titem"><div class="tdot"></div><div class="ttitle">B.Tech — Electronics & Communication Engineering</div><div class="tdate-badge">Sep 2023 – Present</div><div class="tsub">Minor in CS · FISAT, Angamaly · APJ Abdul Kalam TU</div><div class="tdesc">CGPA: 8.84</div></div>
-        <div class="titem"><div class="tdot"></div><div class="ttitle">Higher Secondary (Class XII)</div><div class="tdate-badge">Jun 2021 – Mar 2023</div><div class="tsub">State Board · St. George Higher Secondary School, Thodupuzha</div><div class="tdesc">Percentage: 97.3%</div></div>
-        <div class="titem"><div class="tdot"></div><div class="ttitle">Secondary School (Class X)</div><div class="tdate-badge">Jun 2020 – Mar 2021</div><div class="tsub">CBSE · Vimala Public School, Thodupuzha</div><div class="tdesc">Percentage: 95.6%</div></div>
-      </div>
-
-      <h3 style="margin-top:2.5rem;">Achievements</h3>
-      <div class="achieve-banner">
-        <div class="achieve-icon">🏆</div>
-        <div>
-          <div class="achieve-title">First Prize — INNOVIX Mini Project Exhibition</div>
-          <div class="achieve-desc">Secured First Prize at RISE 2026, Federal Institute of Science and Technology (FISAT), for the project Human-Centric Embodied Home Assistant.</div>
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-container">
+            <div class="preloader-background-flash"></div>
+            <div class="preloader-name">Anandhu Biju</div>
         </div>
-      </div>
-
-      <h3 style="margin-top:2rem;">Certifications</h3>
-      <div class="cert-grid">
-        <div class="cert-card"><div class="cert-icon">🔧</div><div><div class="cert-title">FPGA Prototyping Using Verilog HDL</div><div class="cert-org">NIELIT</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-title">Python for Data Science</div><div class="cert-org">NPTEL</div></div></div>
-        <div class="cert-card"><div class="cert-icon">💻</div><div><div class="cert-title">Microprocessors and Microcontrollers</div><div class="cert-org">NPTEL</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🧠</div><div><div class="cert-title">Machine Learning</div><div class="cert-org">NSDC</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🤖</div><div><div class="cert-title">Deep Learning</div><div class="cert-org">NSDC</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🎖️</div><div><div class="cert-title">NCC B Certificate</div><div class="cert-org">National Cadet Corps</div></div></div>
-      </div>
     </div>
 
-    <div class="resume-col">
-      <h3>Skills</h3>
-      <div class="skill-group"><h4>Programming Languages</h4><div class="skill-tags"><span class="stag">C</span><span class="stag">Python</span><span class="stag">Embedded C</span></div></div>
-      <div class="skill-group"><h4>Embedded & Robotics</h4><div class="skill-tags"><span class="stag">Arduino</span><span class="stag">Raspberry Pi</span><span class="stag">ESP32</span><span class="stag">Sensors</span><span class="stag">Actuators</span></div></div>
-      <div class="skill-group"><h4>Tools & Software</h4><div class="skill-tags"><span class="stag">Linux</span><span class="stag">VS Code</span><span class="stag">KiCad</span><span class="stag">Autodesk Fusion</span><span class="stag">Unity</span></div></div>
-      <div class="skill-group"><h4>Focus Areas</h4><div class="skill-tags"><span class="stag">Robotics</span><span class="stag">Embedded System Development</span><span class="stag">AI</span><span class="stag">FPGA / Verilog</span><span class="stag">PCB Designing</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="sec-eyebrow">Projects</div>
-  <h2 class="sec-title">My Works</h2>
-  <div class="proj-grid">
-    <div class="proj-card" onclick="openModal('m1')">
-      <div class="proj-card-img"><img src="assets/ha-cover.jpg" alt="Home Assistant"/></div>
-      <div class="proj-always-name">Home Assistant</div>
-      <div class="proj-card-overlay">
-        <div class="proj-card-name">Human-Centric Embodied Home Assistant</div>
-        <div class="proj-card-short">Computer vision + voice + embedded control · Raspberry Pi + ESP32</div>
-      </div>
-      <div class="proj-card-badge">🏆 First Prize</div>
-    </div>
-    <div class="proj-card" onclick="openModal('m2')">
-      <div class="proj-card-img"><img src="assets/vr-cover.jpg" alt="VR Workshop"/></div>
-      <div class="proj-always-name">Virtual Horizon — VR Workshop</div>
-      <div class="proj-card-overlay">
-        <div class="proj-card-name">Virtual Horizon — VR Workshop</div>
-        <div class="proj-card-short">Unity VR app · Education & tourism · Vidyodaya School, Kochi</div>
-      </div>
-    </div>
-    <div class="proj-card" onclick="openModal('m3')">
-      <div class="proj-card-img"><img src="assets/robot-cover.jpg" alt="TSLV Robot"/></div>
-      <div class="proj-always-name">TSLV Robot</div>
-      <div class="proj-card-overlay">
-        <div class="proj-card-name">TSLV Robot</div>
-        <div class="proj-card-short">ESP32 Wi-Fi robot · OLED expressions · Touch sensors</div>
-      </div>
-    </div>
-    <div class="proj-card" onclick="openModal('m4')">
-      <div class="proj-card-img"><img src="assets/pcb-cover.jpg" alt="Custom PCB"/></div>
-      <div class="proj-always-name">Custom PCB Design</div>
-      <div class="proj-card-overlay">
-        <div class="proj-card-name">Custom PCB — Home Assistant System</div>
-        <div class="proj-card-short">KiCad · PCBWay · Raspberry Pi + ESP32 integration</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="sec-eyebrow">Contact</div>
-  <h2 class="sec-title">Get In Touch</h2>
-  <div class="contact-grid">
-    <div class="contact-card"><div class="cc-icon">📧</div><div><div class="cc-label">Email</div><div class="cc-val"><a href="mailto:anandhubijua2004@gmail.com">anandhubijua2004@gmail.com</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon">💼</div><div><div class="cc-label">LinkedIn</div><div class="cc-val"><a href="https://www.linkedin.com/in/anandhu-biju--/" target="_blank">linkedin.com/in/anandhu-biju--</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon">🐙</div><div><div class="cc-label">GitHub</div><div class="cc-val"><a href="https://github.com/ANANDHU-BIJU/" target="_blank">github.com/ANANDHU-BIJU</a></div></div></div>
-    <div class="contact-card"><div class="cc-icon">📍</div><div><div class="cc-label">Location</div><div class="cc-val">Thodupuzha, Kerala, India</div></div></div>
-  </div>
-</section>
-
-<!-- MODAL 1: Home Assistant -->
-<div class="modal-overlay" id="m1" onclick="closeModal(event,this)">
-  <div class="modal">
-    <div class="modal-close"><button onclick="closeModalById('m1')">✕</button></div>
-    <div class="modal-body">
-      <div class="modal-date">Jan 2026 – Mar 2026 · Mini Project</div>
-      <div class="modal-title">Human-Centric Embodied Home Assistant</div>
-      <div class="modal-award">🏆 First Prize — INNOVIX / RISE 2026 at FISAT</div>
-      <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main"><video src="assets/ha-1.mp4" controls></video></div>
-        <div class="modal-media-item"><video src="assets/ha-2.mp4" controls></video></div>
-        <div class="modal-media-item"><video src="assets/ha-3.mp4" controls></video></div>
-      </div>
-      <div class="modal-sections">
-        <div>
-          <div class="modal-sec"><h4>Overview</h4><p>A Human-Centric Embodied Home Assistant designed to enhance human–machine interaction in smart home environments. Unlike conventional assistants that rely solely on voice, this system integrates computer vision, speech interaction, and embedded control — enabling face recognition, presence detection, and expressive physical interaction through a Raspberry Pi 2 Model B and ESP32 controller.</p></div>
-          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
-            <li>Face recognition for identity-based secure interaction</li>
-            <li>Voice interaction via USB microphone with speech-to-text and text-to-speech</li>
-            <li>Wake word navigation — layout-driven movement to predefined rooms when no face is detected</li>
-            <li>3-DOF servo head movement for expressive, user-oriented physical interaction</li>
-            <li>Radar-based human presence detection for improved responsiveness</li>
-            <li>TFT display for visual feedback and expressions</li>
-            <li>Wireless home automation via ESP8266 — WiFi relay control for appliances</li>
-            <li>Web-based remote inspection — motor control and image capture via browser</li>
-            <li>Custom PCB design for improved reliability and compactness</li>
-            <li>Battery-powered with regulated supply rails for portable operation</li>
-          </ul></div>
+    <!-- MAIN HEADER / NAVBAR -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Anandhu Biju</a>
+            <nav class="nav-menu">
+                <a href="#intro" class="nav-link">About</a>
+                <a href="#works" class="nav-link">Works</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Timeline</a>
+                <a href="#resume" class="nav-link">Resume</a>
+                <a href="#footer" class="nav-link">Contact</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <div class="menu-toggle-box">
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </div>
+            </button>
         </div>
-        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">Raspberry Pi</span><span class="modal-tag">ESP32</span><span class="modal-tag">Python</span><span class="modal-tag">OpenCV</span><span class="modal-tag">Embedded C</span><span class="modal-tag">ESP8266</span><span class="modal-tag">Custom PCB</span><span class="modal-tag">TFT Display</span><span class="modal-tag">Servo Motors</span><span class="modal-tag">Radar Sensor</span></div></div>
-      </div>
-    </div>
-  </div>
-</div>
+    </header>
 
-<!-- MODAL 2: VR Workshop -->
-<div class="modal-overlay" id="m2" onclick="closeModal(event,this)">
-  <div class="modal">
-    <div class="modal-close"><button onclick="closeModalById('m2')">✕</button></div>
-    <div class="modal-body">
-      <div class="modal-date">Aug 2025 – Sep 2025 · Team Project</div>
-      <div class="modal-title">Virtual Horizon — VR Workshop</div>
-      <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main"><video src="assets/vr-1.mp4" controls></video></div>
-        <div class="modal-media-item"><video src="assets/vr-2.mp4" controls></video></div>
-      </div>
-      <div class="modal-sections">
-        <div>
-          <div class="modal-sec"><h4>Overview</h4><p>A hands-on VR workshop conducted at Vidyodaya School, Kochi, as part of a teachers and students meet. The session was designed to introduce the future of virtual reality technology through live demonstrations — giving students and educators a first-hand experience of how VR is transforming education, exploration, and entertainment.</p></div>
-          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
-            <li>Developed an original VR game from scratch using Unity engine</li>
-            <li>Virtual campus tour — teachers explored FISAT campus in immersive 360° from their own school</li>
-            <li>Interactive chemistry lab simulations — conducted virtual practical experiments safely in VR</li>
-            <li>Showcased real-world VR applications in education, tourism, and gaming</li>
-            <li>Live demo sessions engaging both students and teachers at Vidyodaya School, Kochi</li>
-            <li>Presented the future roadmap of VR technology and its impact on modern learning</li>
-          </ul></div>
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay">
+        <div class="mob-menu-links">
+            <a href="#intro" class="mob-nav-link">About</a>
+            <a href="#works" class="mob-nav-link">Works</a>
+            <a href="#skills" class="mob-nav-link">Skills</a>
+            <a href="#education" class="mob-nav-link">Timeline</a>
+            <a href="#resume" class="mob-nav-link">Resume</a>
+            <a href="#footer" class="mob-nav-link">Contact</a>
         </div>
-        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">Unity</span><span class="modal-tag">C#</span><span class="modal-tag">VR SDK</span><span class="modal-tag">3D Modelling</span></div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL 3: TSLV Robot -->
-<div class="modal-overlay" id="m3" onclick="closeModal(event,this)">
-  <div class="modal">
-    <div class="modal-close"><button onclick="closeModalById('m3')">✕</button></div>
-    <div class="modal-body">
-      <div class="modal-date">Jan 2024 – Feb 2024 · Hardware Project</div>
-      <div class="modal-title">TSLV Robot</div>
-      <div class="modal-media-grid">
-        <div class="modal-media-item modal-media-main"><video src="assets/robot-1.mp4" controls></video></div>
-        <div class="modal-media-item"><video src="assets/robot-2.mp4" controls></video></div>
-      </div>
-      <div class="modal-sections">
-        <div>
-          <div class="modal-sec"><h4>Overview</h4><p>An ESP32-based robot with Wi-Fi-enabled motion control operated through a mobile phone browser interface. Designed to explore embedded systems, robotics, and human-robot interaction with expressive visual feedback.</p></div>
-          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
-            <li>Wi-Fi control via mobile browser using ESP32</li>
-            <li>Touch sensors for interactive user input</li>
-            <li>OLED display showing facial expressions and status</li>
-            <li>Custom chassis and motor driver integration</li>
-          </ul></div>
+        <div class="mob-contact-info">
+            <span>anandhubijua2004@gmail.com</span>
+            <span>+91 8089063799</span>
         </div>
-        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">ESP32</span><span class="modal-tag">Embedded C</span><span class="modal-tag">Wi-Fi</span><span class="modal-tag">OLED</span><span class="modal-tag">Touch Sensors</span><span class="modal-tag">Motor Driver</span></div></div>
-      </div>
     </div>
-  </div>
-</div>
 
-<!-- MODAL 4: Custom PCB -->
-<div class="modal-overlay" id="m4" onclick="closeModal(event,this)">
-  <div class="modal">
-    <div class="modal-close"><button onclick="closeModalById('m4')">✕</button></div>
-    <div class="modal-body">
-      <div class="modal-date">2026 · Hardware Design</div>
-      <div class="modal-title">Custom PCB — Home Assistant System</div>
-      <div class="pcb-media-grid">
-        <div class="modal-media-item"><img src="assets/pcb-1.jpg" alt="PCB Design 1"/></div>
-        <div class="modal-media-item"><img src="assets/pcb-2.jpg" alt="PCB Design 2"/></div>
-        <div class="modal-media-item"><img src="assets/pcb-3.jpg" alt="PCB Design 3"/></div>
-        <div class="modal-media-item"><img src="assets/pcb-4.jpg" alt="PCB Design 4"/></div>
-      </div>
-      <div class="pcb-video-row">
-        <video src="assets/pcb-1.mp4" controls></video>
-      </div>
-      <div class="modal-sections">
-        <div>
-          <div class="modal-sec"><h4>Overview</h4><p>A custom PCB designed using KiCad to integrate the core hardware components of the Home Assistant system into a single compact unit. The board consolidates connections for the Raspberry Pi, ESP32 DevKit, servo motors, radar sensor (LD2410), motor driver (TB6612FNG), TFT display, and power supply components — simplifying wiring and significantly improving system reliability. Manufactured and ordered through PCBWay.</p></div>
-          <div class="modal-sec" style="margin-top:1.5rem;"><h4>Key Features</h4><ul>
-            <li>Integrates Raspberry Pi, ESP32, servo motors, radar sensor, and motor driver on a single board</li>
-            <li>TB6612FNG motor driver for precise and efficient motor control</li>
-            <li>LD2410 radar sensor integration for human presence detection</li>
-            <li>Power regulation and distribution for both high-power (motors) and low-power (logic) components</li>
-            <li>Organized, stable connections replacing complex wiring harnesses</li>
-            <li>Compact form factor improving system enclosure and portability</li>
-            <li>Manufactured and delivered via PCBWay</li>
-          </ul></div>
+    <!-- HERO SECTION (Light Theme) -->
+    <section class="hero" id="hero" data-theme="light">
+        <!-- ThreeJS 3D Render Canvas -->
+        <canvas id="three-canvas"></canvas>
+        
+        <div class="hero-top-row">
+            <div class="hero-top-left">
+                <p class="hero-tagline">
+                    A fourth-year ECE student & CS minor.<br>
+                    Specializing in Embedded, Robotics & AI.
+                </p>
+            </div>
+            <div></div>
         </div>
-        <div class="modal-sec"><h4>Tech Stack</h4><div class="modal-tags"><span class="modal-tag">KiCad</span><span class="modal-tag">PCBWay</span><span class="modal-tag">ESP32</span><span class="modal-tag">Raspberry Pi</span><span class="modal-tag">TB6612FNG</span><span class="modal-tag">LD2410</span><span class="modal-tag">TFT Display</span><span class="modal-tag">Power Regulation</span></div></div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<script>
-function show(id,el){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  document.querySelectorAll('.hin').forEach(a=>a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if(el&&el.tagName==='A'){
-    el.classList.add('active');
-    const idx=[...document.querySelectorAll('.nav-links a')].findIndex(a=>a.textContent===el.textContent);
-    if(idx>-1)document.querySelectorAll('.nav-links a')[idx].classList.add('active');
-    const idx2=[...document.querySelectorAll('.hin')].findIndex(a=>a.textContent===el.textContent);
-    if(idx2>-1)document.querySelectorAll('.hin')[idx2].classList.add('active');
-  }
-}
-const roles=['Embedded Systems Engineer','Robotics Enthusiast','ECE Student','Electronics Engineer'];
-let ri=0,ci=0,del=false;
-function typeEffect(){
-  const el=document.getElementById('typed-text');if(!el)return;
-  const cur=roles[ri];
-  if(!del){el.textContent=cur.substring(0,ci+1);ci++;if(ci===cur.length){del=true;setTimeout(typeEffect,1800);return;}}
-  else{el.textContent=cur.substring(0,ci-1);ci--;if(ci===0){del=false;ri=(ri+1)%roles.length;}}
-  setTimeout(typeEffect,del?60:100);
-}
-typeEffect();
-function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
-function closeModalById(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
-function closeModal(e,overlay){if(e.target===overlay){overlay.classList.remove('open');document.body.style.overflow='';}}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>{m.classList.remove('open');document.body.style.overflow='';})}});
-</script>
+        <h1 class="hero-main-title">ANANDHU</h1>
+
+        <div class="hero-bottom-row">
+            <span class="hero-location">FISAT, Kerala, India</span>
+            <div class="hero-social-links">
+                <a href="https://linkedin.com/in/anandhu-biju--" target="_blank">LinkedIn</a>
+                <span>/</span>
+                <a href="https://github.com/ANANDHU-BIJU" target="_blank">GitHub</a>
+                <span>/</span>
+                <a href="#" class="lang-toggle" onclick="return false;">EN</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATEMENT / INTRO SECTION (Light Theme) -->
+    <section class="section intro-section" id="intro" data-theme="light">
+        <div class="container">
+            <span class="section-num">01 /</span>
+            <div class="section-title-wrap">
+                <h2 class="section-title">
+                    <span class="line-mask"><span class="line-mask-inner">Perspective</span></span>
+                </h2>
+            </div>
+            
+            <div class="intro-text-big scroll-fade" style="font-family: var(--font-sans); font-size: 2.2rem; text-transform: none; line-height: 1.5; font-weight: 400; color: var(--text-light); max-width: 1050px; letter-spacing: -0.01em;">
+                "Driven by a passion for building systems that bridge the physical and digital worlds — combining hardware expertise with software intelligence to create meaningful, real-world solutions."
+            </div>
+            
+            <div class="showreel-wrap scroll-fade">
+                <video src="assets/ha-1.mp4" poster="assets/ha-cover.jpg" autoplay loop muted playsinline crossorigin="anonymous"></video>
+            </div>
+            
+            <div class="intro-grid">
+                <div class="intro-col scroll-fade">
+                    <p>I am an Electronics and Communication Engineering student with a minor in Computer Science at FISAT, Angamaly (APJ Abdul Kalam Technological University). My focus lies in designing smart hardware, microcontrollers, VLSI designs, and integrating machine learning models with physical components.</p>
+                </div>
+                <div class="intro-col scroll-fade">
+                    <p>From complex PCB layouts to robotics and software engineering, I specialize in architecting systems that are responsive, connected, and intelligent. I believe that good engineering is not just functional, but clean, scalable, and intuitive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKS / PROJECTS SECTION (Dark Theme) -->
+    <section class="section works-section" id="works" data-theme="dark">
+        <div class="container">
+            <div class="works-grid-header">
+                <div>
+                    <span class="section-num">02 /</span>
+                    <h2 class="section-title">Works</h2>
+                </div>
+                <div class="works-grid-tagline" style="font-family: var(--font-sans); text-transform: none; font-weight: 400; color: #888; font-size: 1.5rem;">
+                    Combining hardware expertise with software intelligence to build systems that bridge the physical and digital worlds.
+                </div>
+            </div>
+            
+            <div class="works-grid">
+                <!-- Project 1: Human Centric Embodied Home Assistant (Left Column) -->
+                <a href="#" class="work-card scroll-fade" data-project-id="home-assistant">
+                    <span class="work-card-category">Mini Project</span>
+                    <h3 class="work-card-title">Human Centric Embodied Home Assistant</h3>
+                    <div class="work-card-media-wrap">
+                        <video src="assets/ha-2.mp4" poster="assets/ha-cover.jpg" muted loop playsinline class="work-card-media"></video>
+                    </div>
+                </a>
+                
+                <!-- Project 2: Custom Build PCB (Right Column - Staggered Offset) -->
+                <div class="work-card stagger-right scroll-fade" data-project-id="pcb-design" style="cursor: pointer;">
+                    <span class="work-card-category">PCB Design</span>
+                    <h3 class="work-card-title">Custom Build PCB</h3>
+                    <div class="work-card-media-wrap">
+                        <video src="assets/pcb-1.mp4" poster="assets/pcb-cover.jpg" muted loop playsinline class="work-card-media"></video>
+                    </div>
+                    <!-- Display small PCB sub-photos to show grid visuals -->
+                    <div class="pcb-grid-gallery">
+                        <img src="assets/pcb-1.jpg" alt="PCB layout 1" class="pcb-grid-img">
+                        <img src="assets/pcb-2.jpg" alt="PCB layout 2" class="pcb-grid-img">
+                        <img src="assets/pcb-3.jpg" alt="PCB layout 3" class="pcb-grid-img">
+                        <img src="assets/pcb-4.jpg" alt="PCB layout 4" class="pcb-grid-img">
+                    </div>
+                </div>
+                
+                <!-- Project 3: TSLV (Left Column) -->
+                <a href="#" class="work-card scroll-fade" data-project-id="robot">
+                    <span class="work-card-category">Micro Project</span>
+                    <h3 class="work-card-title">TSLV</h3>
+                    <div class="work-card-media-wrap">
+                        <video src="assets/robot-1.mp4" poster="assets/robot-cover.jpg" muted loop playsinline class="work-card-media"></video>
+                    </div>
+                </a>
+                
+                <!-- Project 4: Virtual Horizon (Right Column - Staggered Offset) -->
+                <a href="#" class="work-card stagger-right scroll-fade" data-project-id="vr-workshop">
+                    <span class="work-card-category">Virtual Reality</span>
+                    <h3 class="work-card-title">Virtual Horizon</h3>
+                    <div class="work-card-media-wrap">
+                        <video src="assets/vr-1.mp4" poster="assets/vr-cover.jpg" muted loop playsinline class="work-card-media"></video>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION (Dark Theme) -->
+    <section class="section skills-section" id="skills" data-theme="dark">
+        <div class="container">
+            <span class="section-num">03 /</span>
+            <div class="section-title-wrap">
+                <h2 class="section-title">
+                    <span class="line-mask"><span class="line-mask-inner">Skills</span></span>
+                </h2>
+            </div>
+            
+            <div class="about-grid">
+                <!-- Removed bio paragraph from here to display skills & official icons cleanly -->
+                <div class="skills-container" style="grid-column: span 2;">
+                    <!-- Core Electronics & VLSI -->
+                    <div class="skills-category scroll-fade">
+                        <div class="skills-cat-title">Core Electronics & VLSI</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,19H5V5H19V19M6,6H11V11H6V6M13,6H18V8H13V6M13,10H18V12H13V10M6,13H11V18H6V13M13,14H18V16H13V14M13,17H18V18H13V17Z"/></svg>
+                                Digital Electronics
+                            </span>
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V11H6V13H11V18H13V13H18V11H13V6H11Z"/></svg>
+                                Analog Electronics
+                            </span>
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M21.4,11.6L12.4,2.6C12,2.2 11.4,2.2 11,2.6L2,11.6C1.6,12 1.6,12.6 2,13L11,22C11.4,22.4 12,22.4 12.4,22.6L21.4,13.6C21.8,13.2 21.8,12.6 21.4,11.6M12,20L4,12L12,4L20,12L12,20M12,17L7,12L12,7L17,12L12,17Z"/></svg>
+                                VLSI Fundamentals
+                            </span>
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M8,9.5V6H5V9.5H8M19,9.5V6H16V9.5H19M5,18H8V14.5H5V18M16,18H19V14.5H16V18M12,6V9.5H9.5V12H14.5V9.5H12M9.5,14.5V18H12V14.5H14.5V12H9.5V14.5Z"/></svg>
+                                Verilog HDL
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Embedded Systems -->
+                    <div class="skills-category scroll-fade">
+                        <div class="skills-cat-title">Embedded Systems & Hardware</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M7,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H7A2,2 0 0,1 5,20V4A2,2 0 0,1 7,2M7,4V8H17V4H7M7,10V20H17V10H7Z"/></svg>
+                                ESP32
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-raspberrypi-line"></i>
+                                Raspberry Pi
+                            </span>
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"/></svg>
+                                Sensor Interfacing
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-kicad-plain"></i>
+                                PCB Design (KiCad)
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulation & Tools -->
+                    <div class="skills-category scroll-fade">
+                        <div class="skills-cat-title">Simulation & Tools</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M7,10H9V17H7V10M11,7H13V17H11V7M15,13H17V17H15V13Z"/></svg>
+                                LTspice
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-matlab-plain"></i>
+                                MATLAB
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-vscode-plain"></i>
+                                VS Code
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-linux-plain"></i>
+                                Linux
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-unity-original"></i>
+                                Unity (VR)
+                            </span>
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M12,2C17.5,2 22,6.5 22,12C22,17.5 17.5,22 12,22C6.5,22 2,17.5 2,12C2,6.5 6.5,2 12,2M12,4C9.8,4 8,5.8 8,8C8,10.2 9.8,12 12,12C14.2,12 16,10.2 16,8C16,5.8 14.2,4 12,4M12,14C9,14 4,15.5 4,18.5V20H20V18.5C20,15.5 15,14 12,14Z"/></svg>
+                                Fusion360 (3D)
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-github-original"></i>
+                                GitHub
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Programming -->
+                    <div class="skills-category scroll-fade">
+                        <div class="skills-cat-title">Programming Languages</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <i class="devicon-c-plain"></i>
+                                C
+                            </span>
+                            <span class="skill-tag">
+                                <i class="devicon-python-plain"></i>
+                                Python
+                            </span>
+                            <span class="skill-tag">
+                                <svg viewBox="0 0 24 24"><path d="M12,2C6.5,2 2,6.5 2,12C2,17.5 6.5,22 12,22C17.5,22 22,17.5 22,12C22,6.5 17.5,2 12,2M12,4C14.8,4 17.2,5.2 18.8,7.2L7.2,18.8C5.2,17.2 4,14.8 4,12C4,7.6 7.6,4 12,4M12,20C9.2,20 6.8,18.8 5.2,16.8L16.8,5.2C18.8,6.8 20,9.2 20,12C20,16.4 16.4,20 12,20Z"/></svg>
+                                Embedded C
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & TIMELINE SECTION (Light Theme) -->
+    <section class="section timeline-section" id="education" data-theme="light">
+        <div class="container">
+            <span class="section-num">04 /</span>
+            <div class="section-title-wrap">
+                <h2 class="section-title">
+                    <span class="line-mask"><span class="line-mask-inner">Timeline</span></span>
+                </h2>
+            </div>
+            
+            <div class="edu-ach-grid">
+                <!-- Education Timeline -->
+                <div class="timeline scroll-fade">
+                    <!-- FISAT -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 – 2027</div>
+                        <h3 class="timeline-title">B.Tech in Electronics & Communication</h3>
+                        <div class="timeline-inst">FISAT, Angamaly (Minor in Computer Science)</div>
+                        <div class="timeline-grade">CGPA: 8.83</div>
+                    </div>
+                    
+                    <!-- XII -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2021 – 2023</div>
+                        <h3 class="timeline-title">Higher Secondary Education (Class XII)</h3>
+                        <div class="timeline-inst">St. George HSS</div>
+                        <div class="timeline-grade">Score: 97.3%</div>
+                    </div>
+                    
+                    <!-- X -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2020 – 2021</div>
+                        <h3 class="timeline-title">High School (Class X)</h3>
+                        <div class="timeline-inst">Vimala Public School (CBSE)</div>
+                        <div class="timeline-grade">Score: 95.6%</div>
+                    </div>
+                </div>
+                
+                <!-- Achievements & Certifications (Clickable links to open PDFs) -->
+                <div class="ach-list scroll-fade">
+                    <a href="assets/certificates/rise_2026.pdf" target="_blank" class="ach-item" style="text-decoration: none; color: inherit;">
+                        <span class="ach-tag">Project Award</span>
+                        <h4 class="ach-title">1st Place — INNOVIX Project Exhibition (RISE 2026) &rarr;</h4>
+                    </a>
+                    <a href="assets/certificates/nielit_fpga.pdf" target="_blank" class="ach-item" style="text-decoration: none; color: inherit;">
+                        <span class="ach-tag">Certification</span>
+                        <h4 class="ach-title">FPGA Prototyping Using Verilog HDL — NIELIT &rarr;</h4>
+                    </a>
+                    <a href="assets/certificates/nptel_mcup.pdf" target="_blank" class="ach-item" style="text-decoration: none; color: inherit;">
+                        <span class="ach-tag">Academic Course</span>
+                        <h4 class="ach-title">Microprocessors & Microcontrollers — NPTEL &rarr;</h4>
+                    </a>
+                    <a href="assets/certificates/nsdc_ml.pdf" target="_blank" class="ach-item" style="text-decoration: none; color: inherit;">
+                        <span class="ach-tag">Certification</span>
+                        <h4 class="ach-title">Machine Learning — NSDC &rarr;</h4>
+                    </a>
+                    <a href="assets/certificates/nptel_python.pdf" target="_blank" class="ach-item" style="text-decoration: none; color: inherit;">
+                        <span class="ach-tag">Academic Course</span>
+                        <h4 class="ach-title">Python for Data Science — NPTEL &rarr;</h4>
+                    </a>
+                    <a href="assets/certificates/ncc_b.pdf" target="_blank" class="ach-item" style="text-decoration: none; color: inherit;">
+                        <span class="ach-tag">NCC</span>
+                        <h4 class="ach-title">National Cadet Corps 'B' Certificate &rarr;</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME SECTION (Dark Theme) -->
+    <section class="section resume-section" id="resume" data-theme="dark">
+        <div class="container">
+            <span class="section-num">05 /</span>
+            <div class="section-title-wrap">
+                <h2 class="section-title">
+                    <span class="line-mask"><span class="line-mask-inner">Resume</span></span>
+                </h2>
+            </div>
+            
+            <div class="resume-wrap">
+                <!-- PDF Viewer / Embed Container (Lazy Loaded via JS data-src attribute) -->
+                <div class="resume-preview-card scroll-fade">
+                    <iframe class="resume-preview-embed" data-src="resume.pdf#toolbar=0" title="Anandhu Biju Resume"></iframe>
+                </div>
+                
+                <!-- Resume Download Panel -->
+                <div class="resume-actions scroll-fade">
+                    <p>View and download my detailed resume to see my academic history, projects details, and complete technical records.</p>
+                    <div>
+                        <a href="resume.pdf" download="Anandhu_Biju_Resume.pdf" class="btn-primary">
+                            <span>Download Resume</span>
+                            <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLITCH SECTION -->
+    <section class="glitch-section" data-theme="dark">
+        <div class="marquee-container">
+            <div class="marquee-text">EMBEDDED SYSTEMS / ROBOTICS / MACHINE LEARNING / CIRCUIT DESIGN / 3D MODELING / ECE</div>
+            <div class="marquee-text">EMBEDDED SYSTEMS / ROBOTICS / MACHINE LEARNING / CIRCUIT DESIGN / 3D MODELING / ECE</div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION (Dark Theme) -->
+    <footer class="footer" id="footer" data-theme="dark">
+        <div class="container">
+            <h2 class="footer-main-title">
+                Let's build<br>from nothin'
+            </h2>
+            
+            <div class="footer-actions">
+                <a href="mailto:anandhubijua2004@gmail.com" class="btn-primary" id="copy-email-btn">
+                    <span>Drop an Email</span>
+                    <span class="font-mono">@</span>
+                </a>
+                <a href="tel:+918089063799" class="btn-secondary" id="copy-phone-btn">
+                    <span>Call +91 80890 63799</span>
+                </a>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-col">
+                    <span>ANANDHU BIJU</span>
+                    <span>Fourth-year ECE Student</span>
+                </div>
+                <div class="footer-bottom-col">
+                    <div class="footer-social-links">
+                        <a href="https://linkedin.com/in/anandhu-biju--" target="_blank" class="footer-social-link">LinkedIn</a>
+                        <a href="https://github.com/ANANDHU-BIJU" target="_blank" class="footer-social-link">GitHub</a>
+                        <a href="https://anandhu-biju.github.io" class="footer-social-link">Website</a>
+                    </div>
+                </div>
+                <div class="footer-bottom-col footer-clock-wrap">
+                    <span>LOCAL TIME</span>
+                    <span id="digital-clock">00:00:00 IST</span>
+                    <span style="display:block; margin-top: 1rem; font-size: 0.75rem;">© 2026 Anandhu Biju</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT POPUP WINDOW (MODAL CONTAINER) -->
+    <div class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close Project Details">&times;</button>
+            <h2 class="modal-title">Project Name</h2>
+            <p class="modal-desc">Project details and specifications...</p>
+            <div class="modal-gallery"></div>
+        </div>
+    </div>
+
+    <!-- EXTERNAL LIBRARIES -->
+    <!-- GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- GSAP ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- Three.js (for 3D scene) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- CUSTOM SCRIPTS -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/three.js"></script>
 </body>
 </html>
