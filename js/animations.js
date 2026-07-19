@@ -8,6 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.querySelector('.preloader');
     const preloaderName = document.querySelector('.preloader-name');
     
+    // Hide hero/header elements IMMEDIATELY (before the preloader ever
+    // starts sliding away). Previously this only happened once the
+    // preloader had finished sliding off-screen, which meant the fully
+    // built hero section was visible underneath for a frame and then
+    // instantly snapped hidden and re-animated in — looking like the
+    // page "reloaded". Setting this up-front means the hero is already
+    // hidden the whole time the preloader covers the screen, so the
+    // entrance animation is the first thing the user ever sees.
+    gsap.set('.logo, .nav-link, .menu-toggle', { y: -20, opacity: 0 });
+    gsap.set('.hero-top-left', { y: 30, opacity: 0 });
+    gsap.set('.hero-main-title', { scale: 1.1, opacity: 0 });
+    gsap.set('.hero-bottom-row', { y: 20, opacity: 0 });
+    gsap.set('.header', { opacity: 1 });
+    
     // Continuously pulse preloader background from dark to light
     const bgPulse = gsap.fromTo(preloader, 
         { backgroundColor: '#070707' },
@@ -51,12 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. HERO ENTRANCE
     function triggerHeroEntrance() {
         const heroTimeline = gsap.timeline();
-        
-        gsap.set('.logo, .nav-link, .menu-toggle', { y: -20, opacity: 0 });
-        gsap.set('.hero-top-left', { y: 30, opacity: 0 });
-        gsap.set('.hero-main-title', { scale: 1.1, opacity: 0 });
-        gsap.set('.hero-bottom-row', { y: 20, opacity: 0 });
-        gsap.set('.header', { opacity: 1 });
         
         heroTimeline
             .to('.logo, .nav-link, .menu-toggle', {
