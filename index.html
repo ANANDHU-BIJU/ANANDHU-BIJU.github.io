@@ -71,6 +71,12 @@
 
     <!-- HERO SECTION (Light Theme) -->
     <section class="hero" id="hero" data-theme="light">
+        <!-- HERO BACKGROUND IMAGE + SMOKE REVEAL LAYER -->
+        <div class="hero-bg-wrap">
+            <div class="hero-bg-image"></div>
+            <div class="hero-bg-smoke"></div>
+        </div>
+
         <!-- ThreeJS 3D Render Canvas -->
         <canvas id="three-canvas"></canvas>
         
@@ -113,7 +119,7 @@
             </div>
             
             <div class="showreel-wrap scroll-fade">
-                <img src="assets/profile.jpg" alt="Anandhu Biju">
+                <video src="assets/ha-1.mp4" poster="assets/ha-cover.jpg" autoplay loop muted playsinline crossorigin="anonymous"></video>
             </div>
             
             <div class="intro-grid">
@@ -155,11 +161,11 @@
                     <span class="work-card-category">PCB Design</span>
                     <h3 class="work-card-title">Custom Build PCB</h3>
                     <div class="work-card-media-wrap">
-                        <img src="assets/pcb-1.jpg" alt="PCB layout 1" class="pcb-grid-img">
+                        <video src="assets/pcb-1.mp4" poster="assets/pcb-cover.jpg" muted loop playsinline class="work-card-media"></video>
                     </div>
                     <!-- Display small PCB sub-photos to show grid visuals -->
                     <div class="pcb-grid-gallery">
-                        <video src="assets/pcb-1.mp4"poster="assets/pcb-cover.jpg"muted loop autoplay playsinline class="pcb-grid-img"></video>
+                        <img src="assets/pcb-1.jpg" alt="PCB layout 1" class="pcb-grid-img">
                         <img src="assets/pcb-2.jpg" alt="PCB layout 2" class="pcb-grid-img">
                         <img src="assets/pcb-3.jpg" alt="PCB layout 3" class="pcb-grid-img">
                         <img src="assets/pcb-4.jpg" alt="PCB layout 4" class="pcb-grid-img">
@@ -480,5 +486,6 @@
     <script src="js/animations.js"></script>
     <script src="js/cursor.js"></script>
     <script src="js/three.js"></script>
+    <script src="js/hero-reveal.js"></script>
 </body>
 </html>
