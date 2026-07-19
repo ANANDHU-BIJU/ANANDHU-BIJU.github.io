@@ -313,21 +313,13 @@ p {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    z-index: 0; /* establishes a stacking context so the negative
+                   z-index .hero-bg-wrap stays scoped inside .hero
+                   instead of sinking below the whole page */
     overflow: hidden;
     padding: 10rem 4rem 3rem 4rem;
     background-color: var(--bg-light);
     color: var(--text-light);
-}
-
-/* Canvas background behind text */
-#three-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
 }
 
 .hero-top-row {
