@@ -433,56 +433,47 @@ p {
 }
 
 /* Intro / Statement Section (Screenshot 5 Style) */
-.intro-section {
-    background-color: var(--bg-light);
-    color: var(--text-light);
-}
-
-.intro-text-big {
-    font-family: var(--font-display);
-    font-size: 4.8vw;
-    line-height: 1.05;
-    font-weight: 800;
-    max-width: 1200px;
-    margin-bottom: 5rem;
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
+.intro-layout {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 4rem;
+    margin-top: 4rem;
+    align-items: start;
 }
 
 .showreel-wrap {
     width: 100%;
-    aspect-ratio: 16/9;
-    background-color: #000;
+    height: 420px;
+    background: #000;
     overflow: hidden;
-    position: relative;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
-.showreel-wrap video {
+.showreel-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .intro-col p {
     font-size: 1.25rem;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 @media (max-width: 991px) {
-    .intro-text-big {
-        font-size: 3.5rem;
-    }
-    .intro-grid {
+
+    .intro-layout {
         grid-template-columns: 1fr;
-        gap: 3rem;
+    }
+
+    .showreel-wrap {
+        height: 300px;
     }
 }
 
